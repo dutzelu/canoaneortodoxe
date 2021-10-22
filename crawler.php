@@ -14,8 +14,6 @@ Vedenii. 83 Cartag. - Vezi şi: altar.
 Venituri. 4, 41, 59 ap.; 25 IV; 7, 8 Gang.; 8, 10, 11 Teofil. - Vezi şi: avere.
 Vizitaţii canonice. 52 Cartag.
 Votul monahal. 16 VI; 18, 20 Vas. - Vezi şi: monah.
-Vrăjitor. Vrăjitorie. 61 ap.; 24 Anc.; 36 Laod.; 3 Gang.; 7, 65, 72, 83 Vas.; 2, 27 Ioan. - Vezi şi: superstiţie, obiceiuri păgâneşti.
-
 
 ';
 
