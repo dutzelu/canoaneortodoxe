@@ -17,7 +17,9 @@ $extra_linkuri = "";
         <?php
 
         $sql_indici= "SELECT DISTINCT `litera` FROM `indice_canonic` ORDER BY `litera` ASC";
-        $rez_indici = mysqli_query($conn, $sql_indici);
+        $stmt = $conn->prepare($sql_indici);
+        $rez_indici = $stmt->execute();
+        $rez_indici = $stmt->get_result();
             
         // afisez literele alfabetului cu linkuri
 
@@ -64,9 +66,6 @@ $extra_linkuri = "";
             $extra_singular = explode (',' , $extra);
  
 
-            // DE REZOLVAT PROBLEMA CUVINTELOR CARE INCEP CU O LITERA DIACRITICA 
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             foreach ($extra_singular as $c) {
                 $c = ltrim ($c);              
                 $prima_litera = ucfirst(substr(replaceSpecialChars($c),0,1));
@@ -89,7 +88,12 @@ $extra_linkuri = "";
             
             // buton de conexiuni
             if (!empty($conexiuni)) { 
-                echo '<p style="margin-top:14px"><a class="btn btn-outline-primary btn-sm" href="indice-canonic-grup.php?' . 'id=' . $id_indice_canonic . '&can=' .$id_uri_canoane_conex . '">Vezi canoanele »</a></p>';
+
+                echo '<form action="indice-canonic-grup.php/canoane-' . creare_url_din_titlu(strtolower($cuvant_cheie)) . '" method="POST">';
+                echo '<input type="hidden" name="id_indice_canonic" value="' . $id_indice_canonic . '">';
+                echo '<input type="hidden" name="id_uri_canoane_conex" value="' . $id_uri_canoane_conex . '">';
+                echo '<input style="margin-top:14px" class="btn btn-outline-primary btn-sm" type="submit" value="Vezi canoanele">';
+                echo '</form>';
             } 
 
             // golesc stringurile 

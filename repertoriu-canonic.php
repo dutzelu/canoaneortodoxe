@@ -21,7 +21,7 @@ include "header.php";
 
                     // afișez titlul tabului
 
-                    echo'<button class="accordion"><span class="badge badge-danger">' . $nume_titlu . " </span>" . $continut_titlu . ' <span class="sageata-repertoriu">&#8628;</span> </button>';
+                    echo'<button class="accordion"><span class="badge bg-primary">' . $nume_titlu . " </span>" . $continut_titlu . ' <span class="sageata-repertoriu">&#8628;</span> </button>';
 
                     // afișez continutul tabului
                     echo '<div class="panel">' . '<ul class="list-group">';

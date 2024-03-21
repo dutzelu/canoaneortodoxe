@@ -27,7 +27,7 @@ function creare_url_din_titlu ($titlu_articol) {
   $caractere_elim = ['','','','',''];
   $titlu_articol = str_replace($caractere_select, $caractere_elim, $titlu_articol); 
 
-  // reduc numarul de cuvinte,tai toate cuvintele dupa 100 de caractere
+  // reduc numarul de cuvinte, tai toate cuvintele dupa 100 de caractere
 
   if (strlen($titlu_articol) > 100  ) 
   {
@@ -65,6 +65,8 @@ function creare_url_din_titlu_cu_id ($titlu_articol, $id_canon) {
 
 }
 
+// Navigație în capitolele canoanelor cu link pe numerele canoanelor pe baza unui id de canon
+
 function lista_numere_url ($x, $y, $z) {
 
       global $conn;
@@ -90,19 +92,57 @@ function lista_numere_url ($x, $y, $z) {
       print_r($nav_all);
     }
 
-    function adauga_slash ($a) {
+// Navigație în capitolele canoanelor cu link pe numerele canoanelor pe baza slug-ului unei categorii
+
+function numere_url_din_categ ($slug) {
+
+      global $conn, $nav_all, $nr_canoane;
+      $sql = 'SELECT canoane.id as id_canon, canoane.Nume, canoane.DenumireExplicativa, titluri_capitole.prescurtare, titluri_capitole.id_inceput, titluri_capitole.id_sfarsit
+      FROM canoane
+      LEFT JOIN titluri_capitole
+      ON canoane.id_titlu_capitol = titluri_capitole.id 
+      WHERE titluri_capitole.slug LIKE ?
+      ORDER BY id_canon';
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param ('s', $slug);
+      $stmt->execute();
+      $result = $stmt->get_result();
+          
+      $nav_all='';
+
+      while ($data = mysqli_fetch_assoc($result)) {   
+      
+          $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
+          $nr_can = rtrim($data['Nume'],$data['prescurtare']);
+          $id_canon = $data['id_canon'];
+          $nr_canoane = $data['id_sfarsit'] - $data['id_inceput'];
+
+          $nav ='<a href="http://localhost/canoane/page.php/' . $url_articol . '?id=' . $id_canon . '">'.$nr_can.'</a>'.', ';
+
+          $nav_all.=$nav; 
+        
+      } 
+
+      $nav_all=substr($nav_all, 0, -2);
+
+    }
+
+
+
+function adauga_slash ($a) {
       $a='/'.$a.'/';
       return $a;
-}
+    }
 
 
 // funcția AFIȘEAZĂ UN CANON
 
-function afiseaza_canon ($b) {    
+function afiseaza_canon ($id_canon) {    
 
     // querry după id pentru canon în baza de date 
     global $conn;
-    $sql_id="SELECT * FROM `canoane` WHERE `id`=$b";
+    $sql_id="SELECT * FROM `canoane` WHERE `id`=$id_canon";
     $rezultate2=mysqli_query($conn, $sql_id);
 
     // interogarea 1 pentru canon
@@ -115,7 +155,7 @@ function afiseaza_canon ($b) {
             FROM canoane
             LEFT JOIN titluri_capitole
             ON canoane.id_titlu_capitol = titluri_capitole.id
-            WHERE canoane.id=$b";
+            WHERE canoane.id=$id_canon";
         
         $sql_cap_rez=mysqli_query($conn, $sql_cap);
         
@@ -128,9 +168,10 @@ function afiseaza_canon ($b) {
             $prescurtare=$data2['prescurtare'];
             $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
           
-            echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $b . '">[edit] </a></p>'; 
+            echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
 
-            echo '<h2 class="titlu_canon"><a href="http://localhost/canoane/page.php/'. $url_articol . '?id=' . $b . '">' .$data['DenumireExplicativa'] .' »</a></span></h2>';
+            echo '<h2 class="titlu_canon"><a href="http://localhost/canoane/page.php/'. $id_canon . '-' . $url_articol . '">' .$data['DenumireExplicativa'] .' »</a>
+            </h2>';
 
             echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
 

@@ -1,4 +1,6 @@
      body {font-size:17px;line-height:20px;}
+
+     a {text-decoration: none;}
     #wrapper {width:1200px;margin:0 auto;}
     .numar_canon {font-weight:bold;}
     .rosu {color:red;}
@@ -49,4 +51,14 @@
         color: #CCC;
     }
 
- 
+    .table > thead:nth-child(1) > tr:nth-child(1) {
+        color: #303E67;
+        background: #F1F5FA;
+        border: 1px solid #EAF0F7;
+        font-weight: bold;
+      }
+
+      .table tr.clickable-row:hover {
+        background: #fafafa;
+        cursor: pointer;
+      }

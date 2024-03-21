@@ -55,16 +55,9 @@ include "titluri-pagini.php";
                 if (isset($_GET['nume'])) 
                     {
 
-                          $sql_ap="SELECT * FROM `co_nou` WHERE `nume` LIKE '%$prescurtare%' ORDER BY `id`";
+                          $sql_ap="SELECT * FROM `co_nou` WHERE `Nume` LIKE '%$prescurtare%' ORDER BY `id`";
                           $rezultate=mysqli_query($conn, $sql_ap);
                        
-                        // $sql_ap = "SELECT * FROM `co_nou` WHERE `nume` LIKE ? ORDER BY 'id'";
-                        // $stmt = $conn->prepare($sql_ap); 
-                        // $stmt->bind_param("s", $prescurtare);
-                        // $stmt->execute();
-                        // $result = $stmt->get_result();
-                        // while ($data = $result->fetch_array()) {
-                        
                         while ($data = mysqli_fetch_assoc($rezultate))
                             {    
                            

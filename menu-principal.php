@@ -2,28 +2,34 @@
 
         <p><a href="http://localhost/canoane/admin/edit.php/hirotonia-episcopului?id=1">Administrare</a></p>
 
-        <p class="badge badge-dark">Canoane pe teme</p>       
+        <p class="badge bg-secondary">Canoane pe teme</p>       
             <ul>
                 <a class="dropdown-item" href="http://localhost/canoane/repertoriu-canonic.php"><li>Repertoriu Canonic</li></a>
                 <a class="dropdown-item" href="http://localhost/canoane/indice-canonic.php?litera=A"><li>Indice Canonic</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane/cautare.php"><li>Căutare</li></a>
          
                 <div class="dropdown-divider"></div>
             </ul>
 
 
-        <p class="badge badge-dark">Sinoadele Ecumenice</p>       
+        <p class="badge bg-secondary">Canoanele Sfinților Apostoli</p>       
+        
+                <ul>
+                    <a class="dropdown-item" href="http://localhost/canoane?nume=apostolice"><li>Canoanele Apostolice</li></a>
+                </ul>
+
+        <p class="badge bg-secondary">Canoanele Sinoadelor Ecumenice</p>       
             <ul>
-                <a class="dropdown-item" href="http://localhost/canoane?nume=apostolice"><li>Canoanele Apostolice</li></a>
-                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-1-ecumenic"><li>Sinodul I Ecumenic</li></a>
-                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-2-ecumenic"><li>Sinodul al II-lea Ecumenic</li></a>
-                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-3-ecumenic"><li>Sinodul al III-lea Ecumenic</li></a>
-                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-4-ecumenic"><li>Sinodul al IV-lea Ecumenic</li></a>
-                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-5-6-ecumenic"><li>Sinodul V-VI Ecumenic</li></a>
-                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-7-ecumenic"><li>Sinodul al VII-lea Ecumenic</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-1-ecumenic"><li>Sinodul I Ecumenic de la Niceea (325)</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-2-ecumenic"><li>Sinodul II Ecumenic de la Constantinopol (381) </li></a>
+                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-3-ecumenic"><li>Sinodul al III-lea Ecumenic de la Efes (431) </li></a>
+                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-4-ecumenic"><li>Sinodul al IV-lea Ecumenic de la Calcedon (451) </li></a>
+                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-5-6-ecumenic"><li>Sinodul V-VI Ecumenic de la Constantinopol (691-692), numit și Trulan </li></a>
+                <a class="dropdown-item" href="http://localhost/canoane?nume=sinodul-7-ecumenic"><li>Sinodul al VII-lea Ecumenic de la Niceea (787) </li></a>
                 <div class="dropdown-divider"></div>
             </ul>
 
-        <p class="badge badge-dark">Sinoadele Locale</p>       
+        <p class="badge bg-secondary">Canoanele Sinoadelor Locale</p>       
         <ul>
             <a class="dropdown-item" href="http://localhost/canoane?nume=cartaginaciprian"><li> Sinodul de la Cartagina (256)</li></a>
             <a class="dropdown-item" href="http://localhost/canoane?nume=ancira"><li> Sinodul de la Ancira</li></a>
@@ -39,7 +45,7 @@
             <div class="dropdown-divider"></div>
         </ul>
 
-        <p class="badge badge-dark">Canoane ale Sfinților Părinți</p>       
+        <p class="badge bg-secondary">Canoanele Sfinților Părinți</p>       
         <ul>
             <a class="dropdown-item" href="http://localhost/canoane?nume=fericitul-dionisie"><li> Fericitul Dionisie</li></a>
             <a class="dropdown-item" href="http://localhost/canoane?nume=sf-grigorie-neocezareea"><li> Sf. Grigorie, Arhiepiscopul Neocezareei</li></a>
@@ -55,9 +61,14 @@
             <a class="dropdown-item" href="http://localhost/canoane?nume=enciclica-ghenadie"><li>Enciclica (458-459) lui Ghenadie, Patriarhul Constantinopolului (471)</li></a>
             <a class="dropdown-item" href="http://localhost/canoane?nume=enciclica-tarasie"><li>ENCICLICA  lui Tarasie, Patriarhul Constantinopolului (806)</li></a>
             <a class="dropdown-item" href="http://localhost/canoane?nume=scrisoare-bonifaciu"><li>Scrisoarea trimisă de sinodul întreg din Africa către Bonifaciu, episcopul Bisericii Romei</li></a>
+        </ul>   
+
+        <p class="badge bg-secondary">Canoanele Întregitoare</p>  
+
+        <ul>
             <a class="dropdown-item" href="http://localhost/canoane?nume=sf-ioan-ajunatorul"><li>Sf. Ioan Ajunătorul</li></a>
             <a class="dropdown-item" href="http://localhost/canoane?nume=nichifor-marturisitorul"><li>Nichifor Marturisitorul</li></a>
             <a class="dropdown-item" href="http://localhost/canoane?nume=nicolae-constantinopol"><li>Nicolae al Constantinopolului</li></a>
             <a class="dropdown-item" href="http://localhost/canoane?nume=prescriptii-canonice"><li>Prescripții canonice</li></a>
         </ul>
-</div>
+    </div>

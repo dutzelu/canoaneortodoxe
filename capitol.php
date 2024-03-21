@@ -8,8 +8,11 @@ if (isset($_GET['id'])) {
 
     $id_cap = $_GET['id'];
 
-    $sql_id_cap = "SELECT * FROM `capitole_repertoriu_canonic` WHERE `id` = $id_cap ";
-    $rez_id_cap = mysqli_query($conn, $sql_id_cap);
+    $sql_id_cap = "SELECT * FROM `capitole_repertoriu_canonic` WHERE `id` = ?";
+    $stmt = $conn->prepare($sql_id_cap);
+    $stmt->bind_param('i', $id_cap);
+    $rez_id_cap = $stmt->execute();
+    $rez_id_cap = $stmt->get_result();
 
     while ($data2 = mysqli_fetch_assoc($rez_id_cap)) {
     
@@ -43,7 +46,6 @@ if (isset($_GET['id'])) {
     
     // afisez linkurile capitolelor din titlu
 
-    echo '<span class="bold">Navighează: </span>';
 
     // afișez canoanele
 
@@ -52,6 +54,7 @@ if (isset($_GET['id'])) {
     } 
 
     $iduri_canoane = explode ("-",$iduri_canoane);
+
 
     echo '<hr style="border:2px solid #000">
         <div class="iduri_secundare">';
