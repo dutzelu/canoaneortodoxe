@@ -54,7 +54,7 @@ preg_match_all($regex, $text, $rezultate_conexiuni, PREG_SET_ORDER, 0);
         }
 
         // iau id-ul capitolului și aflu id_început
-        
+    
         $sql_id_inceput= "SELECT `prescurtare`,`id_inceput` FROM `titluri_capitole` WHERE `id`=$id_capitol";
         $rez_id_inceput = mysqli_query($conn, $sql_id_inceput);
 

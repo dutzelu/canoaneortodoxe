@@ -1,44 +1,21 @@
-<?php 
-include 'header.php';
+
+<?php
+
+function replaceSpecialChars ($string){
 
 
-$slug = 'apostolice';
-
-echo "<form>";
-
-$sql = 'SELECT canoane.id as id_canon, canoane.Nume, canoane.DenumireExplicativa, titluri_capitole.prescurtare, titluri_capitole.id_inceput, titluri_capitole.id_sfarsit
-    FROM canoane
-    LEFT JOIN titluri_capitole
-    ON canoane.id_titlu_capitol = titluri_capitole.id 
-    WHERE titluri_capitole.slug LIKE ?
-    ORDER BY id_canon';
-
-$stmt = $conn->prepare($sql);
-$stmt->bind_param ('s', $slug);
-$stmt->execute();
-$result = $stmt->get_result();
-
-$nav_all='';
-
-echo '<select class="form-control choices-single" data-live-search="true">';
-while ($data = mysqli_fetch_assoc($result)) {   
+    $unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+                            'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
+                            'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
+                            'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
+                            'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ă'=>'a', 'Ă'=>'A', 'ș'=>'s', 'Ș'=>'S', 'ț'=>'t', 'Ț'=>'T' );
+    return strtr( $string, $unwanted_array );
     
-    $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
-    $nr_can = rtrim($data['Nume'],$data['prescurtare']);
-    $id_canon = $data['id_canon'];
-    $nr_canoane = $data['id_sfarsit'] - $data['id_inceput'];
-    // $nav ='<a href="http://localhost/canoane/page.php' . $url_articol . '?id=' . $id_canon . '">'.$nr_can.'</a>'.', ';
-    $url ='http://localhost/canoane/page.php' . $url_articol . '?id=' . $id_canon . '">'.$nr_can;
-    
-    echo '<option value="'. $nav . '">' . $nr_can . '</option>';
-    $nav_all.=$nav; 
-    
-} 
-echo '</select>';
-echo '<input type="submit" class="form-control">';
-echo '</form>';
-$nav_all=substr($nav_all, 0, -2);
+}
 
 
-?>
- 
+$string = "Dacă vreun episcop sau presbiter nu ar săvârşi cele trei afundări ale unei singure sfinţiri (a botezului), ci numai o afundare, aceea care se dă (se practică) întru moartea Domnului, să se caterisească. Pentru că nu a zis Domnul: întru moartea mea botezaţi, ci: mergând, învăţaţi toate nea­murile, botezându-i pe ei în numele Tatălui şi al Fiului şi al Sfântului Duh (Matei 28,19). ";
+
+$string= replaceSpecialChars($string);
+
+echo str_replace('­', '', $string);

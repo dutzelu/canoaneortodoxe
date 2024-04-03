@@ -9,15 +9,13 @@ $b = $_GET['id'];
 if(isset ($_POST["submit"]) ) {
 
   $continut = $_POST["continut"];
-  $conexiuni = $_POST["conexiuni"];
-  $anexe = $_POST["anexe"];
+  $cuvant_cheie = $_POST["cuvant_cheie"];
 
   
 
-  $query="UPDATE capitole_repertoriu_canonic 
+  $query="UPDATE indrumator_canonic 
           SET `continut` = '$continut',
-              `conexiuni` = '$conexiuni',
-              `anexe` = '$anexe'
+              `cuvant_cheie` = '$cuvant_cheie'
           WHERE `id` = '$b'";
   
   
@@ -31,6 +29,6 @@ echo "Problem updating record. MySQL Error: " . mysql_error();}
 
 // redirectionare inapoi catre pagina de editare a canonului, având acum datele modificate din baza de date
 
-header('Location:../admin/edit-repertoriu.php/' . '?id=' . $b );
+header('Location:../admin/edit-indrumator.php/' . '?id=' . $b );
   
 ?>

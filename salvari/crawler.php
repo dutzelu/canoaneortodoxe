@@ -1,5 +1,5 @@
 <?php
-include "conexiune.php";
+include "db.php";
 $re = '/((?m)^CANONUL \d\s.*\))|(\w.*)|((?m)^\(.*\))/m';
 $str = '
 CANONUL 1 Nicolae Const. (CĂLUGĂRII POT INTRA ÎN ALTAR)

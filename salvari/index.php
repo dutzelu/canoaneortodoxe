@@ -1,4 +1,4 @@
-<?php include "conexiune.php";
+<?php include "db.php";
 
     if (isset($_GET['nume'])) {
         $a = $_GET['nume'];

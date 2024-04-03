@@ -1,6 +1,35 @@
+<?php 
+
+include "db.php";
+include "functii.php";
+include "titluri-pagini.php"; 
+
+    // Opresc codul ca să afișez $titlu_pg
+?>
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    
+    <title>Canon principal + conexiuni</title>
+    <?php include "header.php";?>
+
+    
+</head>
+
+<body>
+    
+<div class="container-fluid">
+
+    <div class="row wrapper">
+
+        <div class="col-lg-4 sidebar-admin">
+                    <?php include "menu-principal.php";?>
+        </div>
+
+        <div class="col-lg-8 zona-principala">
+
 <?php
-$titlu_pg = "Canon principal + conexiuni";
-include "header.php";
 
 if (isset($_GET['id'])) {
     $b = $_GET['id'];

@@ -2,7 +2,10 @@
 
 // Extrag din db titlurile paginilor și prescurtarea
  
- 
+if (isset($_GET['nume'])) {
+    $a = $_GET['nume'];
+} else {$a="";}
+
 $sql_presc="SELECT * FROM `titluri_capitole` WHERE `slug` LIKE '$a'";
 $rez_sql_presc = mysqli_query($conn, $sql_presc);
 

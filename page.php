@@ -1,11 +1,11 @@
-<?php
+<?php 
+
+include "db.php";
+include "functii.php";
+include "titluri-pagini.php"; 
+
 
 //  Afișare articol
-include "conexiune.php";
-
-if (isset($_GET['nume'])) {
-    $a = $_GET['nume'];
-} else {$a="";}
 
 $url =  "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $slug_canon = basename($url);
@@ -13,11 +13,14 @@ $slug_canon = explode('-', $slug_canon);
 $id_canon = (int)$slug_canon[0];
 
 
-if (isset($_GET['id'])) {
+if (isset( $_GET['id'])) {
     $id_canon = $_GET['id'];
 } 
+if (isset( $_GET['cautare'])) {
+    $cautare = $_GET['cautare'];
+} else {$cautare = NULL;}
 
-include "titluri-pagini.php"; 
+$cuvant_cautat_html = '<b>' . $cautare . '</b>';
 
         // querry după id pentru canon în baza de date 
    
@@ -46,11 +49,40 @@ include "titluri-pagini.php";
             $sql_cap_rez = $stmt->execute();
             $sql_cap_rez = $stmt->get_result();
             
-            $titlu_pg = $data['Nume'] . " " .$data['DenumireExplicativa'];
-            include "header.php";
+            $titlu_pg = $data['Nume'] . " | " .$data['DenumireExplicativa'];
+            $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
+
+            // opresc codul ca să afișez $title_pg și apoi continui
+?>
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    
+    <title><?php echo $titlu_pg;?></title>
+    <?php include "header.php";?>
+
+    
+</head>
+
+<body>
+    
+<div class="container-fluid">
+
+    <div class="row wrapper">
+
+        <div class="col-lg-4 sidebar-admin">
+                    <?php include "menu-principal.php";?>
+        </div>
+
+        <div class="col-lg-8 zona-principala">
 
 
-            
+
+
+
+<?php
+            // Continuare while loop
  
              // interogarea 2 pentru categorie canon, slug și numere celorlalte canoane
 
@@ -63,13 +95,9 @@ include "titluri-pagini.php";
                 $simfonie = $data["Simfonie"];
  
                 echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
-                echo '<h2 class="titlu_canon">' . $data['DenumireExplicativa'] .'</h2>';
+                echo '<h1 class="titlu_canon">' . $data['DenumireExplicativa'] .'</h1>';
                 echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
-
-                if ($nr_canoane>1) {
-                    echo '<p><span class="bold">Navighează: </span>';
-                }
-
+                
                  // afisez toate numerele de canoane cu url din categoria respectivă
                 $url_baza="page.php";
                 lista_numere_url ($prescurtare,$id_canon,$url_baza);
@@ -77,29 +105,31 @@ include "titluri-pagini.php";
         
 
                 // afisez continutul canonului, pedeapsa, conexiuni, comentarii si simfonie
-            
-                echo '<div class="continut">'.$data['Continut'].'</div>';
 
+                $continut = str_replace($cautare, $cuvant_cautat_html, $data['Continut']); // subliniere cuvant cautat
+            
+                echo '<div class="continut">'.$continut.'</div>';
+
+                echo '<div class="continut-secundar">';
 
                 if ($data["Pedeapsa"]==NULL || $data["Pedeapsa"]=='-'){echo "";} 
-                else {echo '<span class="rosu">Pedeapsa: </span>' .$data['Pedeapsa']."<br>";} 
+                else {echo 'Pedeapsa: </span>' .$data['Pedeapsa']."<br>";} 
            
                 if ($data["Conexiuni"]==NULL || $data["Conexiuni"]=='-'){echo "";} 
+
                 else {
-                    // echo '<span class="rosu">Conexiuni: </span>' .$data['Conexiuni']."<br>"; conexiuni fara link
+                    // echo 'Conexiuni: </span>' .$data['Conexiuni']."<br>"; conexiuni fara link
 
                     $text=$data['Conexiuni'];
-                    echo '<span class="rosu">Conexiuni: </span>';
+                    echo 'Conexiuni: </span>';
 
                     // introduc conexiunile cu link
                     include "conex-canoane.php";
 
-                    
 
                      // butonul Canon + conexiuni
-                    //  echo '<p style="margin-top:14px"><a class="btn btn-outline-primary btn-sm" href="http://localhost/canoane/grup.php?id=' . $_GET['id'] . '&conex=' .$id_uri_canoane_conex . '">Canon + conexiuni »</a></p>';
 
-                     echo '<form action="http://localhost/canoane/grup.php" method="POST">';
+                     echo '<form action="http://localhost/canoane/conexiuni.php?' . $url_articol . '?id=' . $id_canon . '" method="POST">';
                      echo '<input type="hidden" name="id_canon" value="' . $id_canon . '">';
                      echo '<input type="hidden" name="id_uri_canoane_conex" value="' . $id_uri_canoane_conex . '">';
                      echo '<input style="margin-top:14px" class="btn btn-outline-primary btn-sm" type="submit" value="Canon + conexiuni">';
@@ -108,18 +138,20 @@ include "titluri-pagini.php";
                 } 
 
                 if ($comentarii ==NULL) {echo "";} 
-                else {echo '<span class="rosu">Comentarii: </span>' . $comentarii ."<br>";}
+                else {echo 'Comentarii: ' . $comentarii ."<br>";}
             
 
                 if ($talcuire ==NULL) {echo "";} 
-                        else {echo '<span class="rosu">Tâlcuire: </span>' .$talcuire."<br>";}
+                        else {echo 'Tâlcuire: ' .$talcuire."<br>";}
                     
 
                 if ($simfonie ==NULL){echo "";} 
-                        else {echo '<span class="rosu">Simfonie: </span>' .$simfonie."<br>";}
+                        else {echo 'Simfonie: ' .$simfonie."<br>";}
              
                 
             }
+            echo '</div>';
+
         }
 
  

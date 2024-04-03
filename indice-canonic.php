@@ -1,18 +1,44 @@
 <?php 
 
-$titlu_pg = "Indice Canonic";
-include "header.php";
-
 if (isset ($_GET['litera'])) {
     $litera_link = $_GET['litera'];
 } else {$litera_link = '';}
 
 $extra_linkuri = "";
 
+    include "db.php";
+    include "functii.php";
+    include "titluri-pagini.php"; 
+
 ?>
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    
+    <title>Indice Canonic | <?php echo $litera_link;?></title>
+    <?php include "header.php";?>
+    
+    
+</head>
+
+<body>
+    
+<div class="container-fluid">
+
+    <div class="row wrapper">
+
+        <div class="col-lg-4 sidebar-admin">
+                    <?php include "menu-principal.php";?>
+        </div>
+
+        <div class="col-lg-8 zona-principala">
+
+
 
 <h2 class="titlu">INDICE CANONIC</h2>
 
+<p>Pentru rezultate complete în cercetarea canoanelor vă recomandăm să folosiți acest indice canonic împreună cu funcția de <a href="http://localhost/canoane/cautare.php">căutare</a> și cu <a href="http://localhost/canoane/repertoriu-canonic.php">repertoriul canonic</a>.</p>
             
         <?php
 
@@ -23,7 +49,7 @@ $extra_linkuri = "";
             
         // afisez literele alfabetului cu linkuri
 
-        echo '<p class="alfabet ml-1">';
+        echo '<p class="alfabet ml-1 mb-5">';
         while ($data = mysqli_fetch_assoc($rez_indici)){    
             
             
@@ -42,7 +68,7 @@ $extra_linkuri = "";
 
         // afisez cuvintele cheie si canoanele
 
-        $sql_litera= "SELECT * FROM `indice_canonic` WHERE `litera` = '$litera_link'"; 
+        $sql_litera= "SELECT * FROM `indice_canonic` WHERE `litera` = '$litera_link' ORDER BY cuvant_cheie"; 
         $rez_litera = mysqli_query($conn, $sql_litera);
  
         echo '<ul class="list-group">';
@@ -52,9 +78,8 @@ $extra_linkuri = "";
             $cuvant_cheie = $data2['cuvant_cheie'];
             $conexiuni = $data2['conexiuni'];
             $extra = $data2['extra'];
-
-            $text="(" . $data2['conexiuni'] . ")";
             
+            $text="(" . $data2['conexiuni'] . ")";
             $id_indice = explode (' ', replaceSpecialChars($cuvant_cheie) );
             
 
@@ -65,12 +90,10 @@ $extra_linkuri = "";
             // pun id-uri si linkuri la extra-urile cuvintelor cheie
             $extra_singular = explode (',' , $extra);
  
-
             foreach ($extra_singular as $c) {
                 $c = ltrim ($c);              
                 $prima_litera = ucfirst(substr(replaceSpecialChars($c),0,1));
                 $primul_cuvant_c = explode (' ', trim($c));     
- 
                 $extra_cu_link = '<a href="http://localhost/canoane/indice-canonic.php?litera=' . $prima_litera . '#' . 
                 replaceSpecialChars ($primul_cuvant_c[0]) . ' ' . '">' . $c . "</a>, ";
 
@@ -89,7 +112,7 @@ $extra_linkuri = "";
             // buton de conexiuni
             if (!empty($conexiuni)) { 
 
-                echo '<form action="indice-canonic-grup.php/canoane-' . creare_url_din_titlu(strtolower($cuvant_cheie)) . '" method="POST">';
+                echo '<form action="indice-canonic-conexiuni.php/canoane-' . creare_url_din_titlu(strtolower($cuvant_cheie)) . '" method="POST">';
                 echo '<input type="hidden" name="id_indice_canonic" value="' . $id_indice_canonic . '">';
                 echo '<input type="hidden" name="id_uri_canoane_conex" value="' . $id_uri_canoane_conex . '">';
                 echo '<input style="margin-top:14px" class="btn btn-outline-primary btn-sm" type="submit" value="Vezi canoanele">';
