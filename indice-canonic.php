@@ -110,13 +110,15 @@ $extra_linkuri = "";
             else {echo 'vezi: ' . $extra_linkuri;}
             
             // buton de conexiuni
-            if (!empty($conexiuni)) { 
 
-                echo '<form action="indice-canonic-conexiuni.php/canoane-' . creare_url_din_titlu(strtolower($cuvant_cheie)) . '" method="POST">';
-                echo '<input type="hidden" name="id_indice_canonic" value="' . $id_indice_canonic . '">';
-                echo '<input type="hidden" name="id_uri_canoane_conex" value="' . $id_uri_canoane_conex . '">';
-                echo '<input style="margin-top:14px" class="btn btn-outline-primary btn-sm" type="submit" value="Vezi canoanele">';
-                echo '</form>';
+            if (!empty($conexiuni)) { 
+                
+                echo '<p><a class="btn btn-outline-primary btn-sm mt-2" href="indice-canonic-conexiuni.php/canoane-' . creare_url_din_titlu(strtolower($cuvant_cheie)) . '?id=' . $id_indice_canonic . '&conex=' .  $id_uri_canoane_conex . '" role="button">Vezi canoanele</a></p>';
+                // echo '<form action="indice-canonic-conexiuni.php/canoane-' . creare_url_din_titlu(strtolower($cuvant_cheie)) . '" method="POST">';
+                // echo '<input type="hidden" name="id_indice_canonic" value="' . $id_indice_canonic . '">';
+                // echo '<input type="hidden" name="id_uri_canoane_conex" value="' . $id_uri_canoane_conex . '">';
+                // echo '<input style="margin-top:14px" class="btn btn-outline-primary btn-sm" type="submit" value="Vezi canoanele">';
+                // echo '</form>';
             } 
 
             // golesc stringurile 

@@ -46,9 +46,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         <div class="col-lg-8 zona-principala">
 
  
-<h1 class="titlu">Căutare în tot siteul</h1>
-<p class="mb-5">în lista de canoane, în indicele canonic, în repertoriul canonic și în îndrumarul canonic.</p>
-
+<h1 class="titlu">Căutare generală (în canoane, indice, repertoriu, îndrumător)</h1>
+<p class="mb-4">Folosiți la căutare cuvinte cheie, 1-2, maxim 3, pentru a obține rezultatele dorite. Încercați mai multe variante ale aceluiași cuvânt. De exemplu pentru Sfânta Împărtășanie, căutați: "euharistie", "cuminecătură", "cuminecare", "împărtășanie", "împărtășire".
 
 <form method="post">
     <div class="row">
@@ -56,7 +55,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             <input type="text" name="search" class="form-control" placeholder="Caută cuvinte cheie" ><br>
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Caută</button>
         </div>
     </div>
 </form>
@@ -84,19 +83,32 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
             if (!empty($rows)) {
     
-            echo '<p><span class="badge bg-primary">Canoane</span></p>';
-            echo "<ul>";
+            echo '<p><span class="badge bg-primary fs-6">Canoane</span></p>';
+            echo '<ul class="rezultat_cautare_canoane">';
             foreach ($rows as $row) {
                 $id_canon = $row['id'];
+                $nume = $row['Nume'];
                 $url_articol = creare_url_din_titlu ($row['DenumireExplicativa']);
                 $continut = $row['Continut'];
                 $nr_cuvinte = 12;
 
-                echo '<li class="titlu_cautari"><a href="http://localhost/canoane/page.php/'. $url_articol . '?id=' . $id_canon . '&cautare='. $cautare . '">' .$row['DenumireExplicativa'] . '</a></li>';
+                echo '<li class="titlu_cautari">
+                
+                <span class="badge bg-secondary">' . $nume . '</span>
+                <a href="http://localhost/canoane/page.php/'. $url_articol . '?id=' . $id_canon . '&cautare='. $cautare . '">' .$row['DenumireExplicativa'] . ' »</a></li>';
             
-                $paragraf_cautare = ellipse($cautare,$continut,$nr_cuvinte);
-                $cuvant_cautat_html = '<b>' . $cautare . '</b>';
-                echo str_replace($cautare, $cuvant_cautat_html, $paragraf_cautare);
+                // afisarea paragraf care cuprinde cuvantul cautat
+
+                $regex = '/((?:\S+\s){0,15}\S*)(' . $cautare . ')(\S*(?:\s\S+){0,15})/mi';
+                preg_match_all($regex, trim($continut), $matches, PREG_SET_ORDER, 0);
+
+                foreach ($matches as $x => $y) {
+                    $cuvant_cautat_html = '<b>' . $cautare . '</b>';
+                    $paragraf = str_ireplace($cautare, $cuvant_cautat_html, strip_tags($y[0]));
+        
+                        echo '<div class="paragraf_cuvant_cautat">(..) ' . $paragraf . '</div>';
+                }
+
             
 
             }
@@ -105,16 +117,16 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
         // Căutare în Îndrumătorul canonic
 
-        $cautare = "%$cautare%"; // prepare the $name variable 
+        $cautare_cu_tag = "%$cautare%"; // prepare the $name variable 
         $sql = "SELECT * FROM indrumator_canonic Where `cuvant_cheie` LIKE ? UNION SELECT * FROM indrumator_canonic Where `continut`LIKE ? ORDER BY `id` ASC; "; // SQL with parameters
         $stmt = $conn->prepare($sql); 
-        $stmt->bind_param("ss", $cautare, $cautare); // here we can use only a variable
+        $stmt->bind_param("ss",  $cautare_cu_tag,  $cautare_cu_tag); // here we can use only a variable
         $stmt->execute();
         $result = $stmt->get_result(); // get the mysqli result
         $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
         
         if (!empty($rows)) {
-            echo '<p><span class="badge bg-secondary">Îndrumător canonic</span></p>';
+            echo '<p><span class="badge bg-info fs-6">Îndrumător canonic</span></p>';
             echo "<ul>";
             foreach ($rows as $row) {
                 $id_indrum = $row['id'];
@@ -122,8 +134,23 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 $id_indice = explode (' ', replaceSpecialChars($cuvant_cheie) );
                 $prima_litera = ucfirst(substr(replaceSpecialChars($cuvant_cheie),0,1));
                 $url_articol = creare_url_din_titlu ($cuvant_cheie);
+                $continut_indrum = $row['continut'];
     
                 echo '<li class="titlu_cautari"><a href="http://localhost/canoane/indrumator-canonic.php?litera=' . $prima_litera . '#'. strtolower($id_indice[0]) . '">' .$cuvant_cheie .'</a></li>';
+
+
+                // // afisarea paragraf care cuprinde cuvantul cautat
+                $regex1 = '/((?:\S+\s){0,15}\S*)(' . $cautare . ')(\S*(?:\s\S+){0,15})/mi';
+                preg_match_all($regex1, trim($continut_indrum), $matches1, PREG_SET_ORDER, 0);
+
+
+                foreach ($matches1 as $a => $b) {
+                    $cuvant_cautat_html = '<b>' . $cautare . '</b>';
+                    $p_indrum = str_ireplace($cautare, $cuvant_cautat_html, strip_tags($b[0]));
+        
+                        echo '<div class="paragraf_cuvant_cautat">(..) ' .  $p_indrum . '</div>';
+                }
+                
             }
             echo "</ul>";
         }
@@ -140,7 +167,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
         
         if (!empty($rows)) {
-            echo '<p><span class="badge bg-success">Indice canonic</span></p>';
+            echo '<p><span class="badge bg-success fs-6">Indice canonic</span></p>';
             echo "<ul>";
             foreach ($rows as $row) {
                 $id_indrum = $row['id'];
@@ -166,7 +193,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
         
         if (!empty($rows)) {
-            echo '<p><span class="badge bg-warning">Repertoriu canonic</span></p>';
+            echo '<p><span class="badge bg-warning fs-6">Repertoriu canonic</span></p>';
             echo "<ul>";
             foreach ($rows as $row) {
                 $id_cap = $row['id'];

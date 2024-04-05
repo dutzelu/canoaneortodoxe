@@ -81,23 +81,4 @@ include "../titluri-pagini.php";
             
                             </form>
                                  
-<script>
-    tinymce.init({
-        
-      selector: 'textarea',
-      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-      editor_deselector : "mceNoEditor"
-      toolbar_mode: 'floating',
-      
-    });
-</script>
-
-<?php include "../footer.php"; ?>
-
-<script>
-    tinymce.init({
-      selector: 'textarea',
-      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-      toolbar_mode: 'floating',
-    });
-</script>
+ 

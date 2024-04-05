@@ -106,7 +106,7 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
 
                 // afisez continutul canonului, pedeapsa, conexiuni, comentarii si simfonie
 
-                $continut = str_replace($cautare, $cuvant_cautat_html, $data['Continut']); // subliniere cuvant cautat
+                $continut = str_ireplace($cautare, $cuvant_cautat_html, $data['Continut']); // subliniere cu bold cuvant cautat
             
                 echo '<div class="continut">'.$continut.'</div>';
 

@@ -110,11 +110,22 @@ color:#FFF;
   color:#FFF;
 }
 
-.titlu_cautari {
-  text-transform: lowercase;
+.cautare_subliniata {background: khaki;}
+
+/* form cu buton detalii */
+
+.detalii {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
-.titlu_cautari:first-letter {
-  text-transform: uppercase;
+ 
+.rezultat_cautare_canoane {padding-left:20px;}
+.rezultat_cautare_canoane li {margin-top:10px; list-style-type: none;}
+.paragraf_cuvant_cautat {margin:7px 0; background:#fafafa; padding:5px; font-style:italic ;}
+
+.lista-meniu .dropdown-item {
+  padding: .1rem 0 !important;
 }
 
-.cautare_subliniata {background: khaki;}
+.sugestii {background:#ffc107}

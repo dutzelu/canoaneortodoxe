@@ -3,11 +3,14 @@
     include "db.php";
     include "functii.php";
 
+if ( isset($_POST['conex']) ) {
+    $id_uri_canoane_conex = $_POST['conex'];
+}
 
-    $id_uri_canoane_conex = $_GET['conex'];
-    $cuvant_cheie = $_GET['tema'];
-    
-  
+if ( isset($_POST['tema']) ) {
+    $cuvant_cheie = $_POST['tema'];
+}
+
     
     $titlu_pg = $cuvant_cheie;
 
@@ -43,7 +46,7 @@
 <?php
     // Continui while loop-ul
 
-         echo '<h1>Tema: <span class="cuvant-cheie-rosu">' . $cuvant_cheie . '</span></h1>';
+         echo '<h1>Canoane despre: <span class="cuvant-cheie-rosu">' . $cuvant_cheie . '</span></h1>';
          echo '<a href="http://localhost/canoane/indrumator-canonic.php?litera=A">←Îndrumător canonic</a>';
      
 

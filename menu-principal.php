@@ -9,14 +9,18 @@
 
             <!-- <p><a href="http://localhost/canoane/admin/edit.php/hirotonia-episcopului?id=1">Administrare</a></p> -->
 
+            <p><a href="http://localhost/canoane/">Prima pagină</a> | <a href="http://localhost/canoane/despre.php">Despre proiect</a> | <a  href="http://localhost/canoane/despre.php">Contact</a> </p>
+                
+   
+
             <p class="badge bg-secondary">Instrumente de cercetare</p>       
             <ul>
-                    <a class="dropdown-item" href="http://localhost/canoane/cautare.php"><li>Căuta în canoane</li></a>
-                    <a class="dropdown-item" href="http://localhost/canoane/cautare-generala.php"><li>Căuta tot site-ul</li></a>
-                    <a class="dropdown-item" href="http://localhost/canoane/indice-canonic.php?litera=A"><li>Indice Canonic</li></a>
-                    <a class="dropdown-item" href="http://localhost/canoane/repertoriu-canonic.php"><li>Repertoriu Canonic</li></a>
-                    <a class="dropdown-item" href="http://localhost/canoane/indrumator-canonic.php?litera=A"><li>Îndrumător Canonic</li></a>
-            
+                <a class="dropdown-item" href="http://localhost/canoane/cautare-generala.php"><li>Căutare generală</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane/cautare.php"><li>Căutare în canoane</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane/indice-canonic.php?litera=A"><li>Indice Canonic</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane/repertoriu-canonic.php"><li>Repertoriu Canonic</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane/indrumator-canonic.php?litera=A"><li>Îndrumător Canonic</li></a>
+                
                 </ul>
 
 

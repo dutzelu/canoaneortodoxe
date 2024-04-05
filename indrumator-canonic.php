@@ -112,7 +112,13 @@ $extra_linkuri = "";
                 
                 array_push ($adunare_conex_fara_link, $y['0']);
 
-                $conexiuni_cu_link .=  '<a class="btn_indrumator" href="indrumator-canonic-conexiuni.php?tema=' . creare_url_din_titlu(strtolower($cuvant_cheie)) . '&conex=' . $id_uri_canoane_conex . '">detalii »</a>';
+                $conexiuni_cu_link .= 
+                 '<form class="detalii" action="indrumator-canonic-conexiuni.php?tema=' . creare_url_din_titlu(strtolower($cuvant_cheie)) . '" method="POST">' .
+                    '<input type="hidden" name="tema" value="' . $cuvant_cheie . '">' .
+                    '<input type="hidden" name="conex" value="' . $id_uri_canoane_conex . '">' .
+                    '<button class="btn_indrumator">detalii</button>' .
+                '</form>';
+        
 
 
                 // afișez continutul tabului
@@ -136,14 +142,9 @@ $extra_linkuri = "";
  
             echo '<div class="indrumator">' . $continut . '</div>';
             
-            // buton de conexiuni
-            if (!empty($continut)) { 
 
-                echo '<form action="indice-canonic-conexiuni.php/canoane-' . creare_url_din_titlu(strtolower($cuvant_cheie)) . '" method="POST">';
-                echo '<input type="hidden" name="id_indrumator_canonic" value="' . $id_cuvant . '">';
-                // echo '<input style="margin-top:14px" class="btn btn-outline-primary btn-sm" type="submit" value="Vezi canoanele">';
-                echo '</form>';
-            } 
+
+
 
             // golesc stringurile 
         

@@ -4,10 +4,10 @@
     include "functii.php";
     include "titluri-pagini.php"; 
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-        $id_indice_canonic = $_POST['id_indice_canonic'];
-        $id_uri_canoane_conex = $_POST['id_uri_canoane_conex'];
+        $id_indice_canonic = $_GET['id'];
+        $id_uri_canoane_conex = $_GET['conex'];
     
         $sql = "SELECT cuvant_cheie FROM indice_canonic WHERE id= ?";
         $stmt = $conn->prepare($sql);

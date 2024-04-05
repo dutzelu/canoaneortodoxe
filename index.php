@@ -13,7 +13,7 @@ include "titluri-pagini.php";
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $titlu_pg;?></title>
+    <title>Canoane Ortodoxe</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="http://localhost/canoane/style.css">
@@ -42,7 +42,7 @@ include "titluri-pagini.php";
 
         <div class="col-lg-8 zona-principala">
 
-        <h1 class="titlu"><?php echo $titlu_pg;?></h1>
+        <h1 class="titlu">Canoane de larg interes pentru public</h1>
 
             
             <?php
@@ -129,10 +129,84 @@ include "titluri-pagini.php";
                 
         ?>
             
-            
-<div>
-    <p>Când ne împărtășim ar trebui să ținem mâinile în formă de cruce pe piept.</p>
+
+
+<div class="row g-3">
+
+    <div class="col">
+        <div class="card h-100">
+        <img src="http://localhost/canoane/imagini/intreita-afundare.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Întreita afundare</h5>
+            <p class="card-text">Botezul copilului se face prin afundarea de 3 ori în cristelniță.</p>
+            <a href="http://localhost/canoane/page.php/botezul-se-savarseste-prin-trei-afundari?id=50" class="btn btn-primary">Citește</a>
+        </div>
+        </div>
+    </div>
+
+     <div class="col">
+         <div class="card h-100">
+         <img src="http://localhost/canoane/imagini/impartasire.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+             <h5 class="card-title">Cum stăm la împărtășire</h5>
+             <p class="card-text">Când ne împărtășim ar trebui să ținem mâinile în formă de cruce pe piept</p>
+             <a href="http://localhost/canoane/page.php?id=278" class="btn btn-primary">Citește</a>
+         </div>
+         </div>
+     </div>           
+
+    <div class="col">
+        <div class="card h-100">
+        <img src="http://localhost/canoane/imagini/ingenuncherea.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Când să îngenunchem?</h5>
+            <p class="card-text">În zi de duminică nu ar trebuie să îngenunchem în biserică</p>
+            <a href="https://localhost/canoane/page.php/randuiala-ingenuncherii-in-biserica?id=267" class="btn btn-primary">Citește</a>
+        </div>
+        </div>
+    </div>
+
 </div>
+
+<!-- Canoane despre desfrânare-->
+            
+<div class="row mt-4 g-3">
+
+    <div class="col">
+        <div class="card h-100">
+        <img src="http://localhost/canoane/imagini/adulter.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Adulter</h5>
+            <p class="card-text">Canoane despre înșelarea soțului sau soției.</p>
+            <a href="http://localhost/canoane/indice-canonic-conexiuni.php/canoane-adulter?id=7&conex=61-264-270-275-322-328-335-755-757-766-769" class="btn btn-primary">Citește</a>
+        </div>
+        </div>
+    </div>
+
+     <div class="col">
+         <div class="card h-100">
+         <img src="http://localhost/canoane/imagini/impartasire.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+             <h5 class="card-title">Cum stăm la împărtășire</h5>
+             <p class="card-text">Când ne împărtășim ar trebui să ținem mâinile în formă de cruce pe piept</p>
+             <a href="http://localhost/canoane/page.php?id=278" class="btn btn-primary">Citește</a>
+         </div>
+         </div>
+     </div>           
+
+    <div class="col">
+        <div class="card h-100">
+        <img src="http://localhost/canoane/imagini/ingenuncherea.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Când să îngenunchem?</h5>
+            <p class="card-text">În zi de duminică nu ar trebuie să îngenunchem în biserică</p>
+            <a href="https://localhost/canoane/page.php/randuiala-ingenuncherii-in-biserica?id=267" class="btn btn-primary">Citește</a>
+        </div>
+        </div>
+    </div>
+
+</div>
+ 
             
             
 
