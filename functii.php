@@ -8,7 +8,7 @@ function replaceSpecialChars ($string){
   'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
   'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
   'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
-  'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ă'=>'a', 'Ă'=>'A', 'ș'=>'s', 'Ș'=>'S', 'ț'=>'t', 'Ț'=>'T', 'Ţ'=>'T', 'Ş'=>'S', 'ţ'=>'t' );
+  'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ă'=>'a', 'Ă'=>'A', 'ș'=>'s', 'Ș'=>'S', 'ț'=>'t', 'Ț'=>'T', 'Ţ'=>'T', 'Ş'=>'S', 'ţ'=>'t', 'ş'=>'s' );
    
   return strtr( $string, $unwanted_array );
 
@@ -168,7 +168,7 @@ function creare_url_din_titlu_cu_id ($titlu_articol, $id_canon) {
   $titlu_articol = str_replace(' ', '', $titlu_articol);
    
   $titlu_articol = strtolower($titlu_articol);
-  $titlu_articol = 'http://localhost/canoane/page.php/' . $titlu_articol . "?id=" . $id_canon;
+  $titlu_articol = 'http://localhost/canoane/unic.php/' . $titlu_articol . "-" . $id_canon;
   return $titlu_articol;
 
 }
@@ -190,18 +190,18 @@ function lista_numere_url ($x, $y, $z) {
           $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
           $nr_can = rtrim($data['Nume'],$x);
           $nr_can = str_replace (' ', '', $nr_can);
+          $id_titlu_capitol = $data['id_titlu_capitol'];
 
+        
         if ($id_canon!=$y){
-          $nav ='<a href="http://localhost/canoane/' . $z . "/" . $url_articol . '?id=' . $id_canon . '">'.$nr_can.'</a>'.', ';
+          $nav ='<a href="http://localhost/canoane/' . $z . "/" . $url_articol . '-' . $id_canon . '">'.$nr_can.'</a>'.', ';
         } else {$nav =$nr_can . ', ';}
 
         $nav_all.=$nav; 
         
       } 
 
-
       echo '<span>Navighează: </span>';
-
 
       $nav_all=substr($nav_all, 0, -2);
       print_r($nav_all);
@@ -237,7 +237,7 @@ function numere_url_din_categ ($slug) {
         $id_canon = $data['id_canon'];
         $nr_canoane = $data['id_sfarsit'] - $data['id_inceput'];
         
-        $nav ='<a href="http://localhost/canoane/page.php/' . $url_articol . '?id=' . $id_canon . '">'.$nr_can.'</a>'.', ';
+        $nav ='<a href="http://localhost/canoane/unic.php/' . $url_articol . '-' . $id_canon . '">'.$nr_can.'</a>'.', ';
         
         $nav_all.=$nav; 
         
@@ -294,7 +294,7 @@ function afiseaza_canon ($id_canon) {
           
             echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
 
-            echo '<h2 class="titlu_canon"><a href="http://localhost/canoane/page.php/'. $url_articol . '?id='. $id_canon . '">' .$data['DenumireExplicativa'] .' »</a>
+            echo '<h2 class="titlu_canon"><a href="http://localhost/canoane/unic.php/'. $url_articol . '-'. $id_canon . '">' .$data['DenumireExplicativa'] .' »</a>
             </h2>';
 
             echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';

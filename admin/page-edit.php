@@ -33,7 +33,7 @@ if (isset($_GET['id'])) {
                 $prescurtare = $data2['prescurtare'];
                 
  
-                echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:"right"  href="http://localhost/canoane/page.php?id=' . $b . '">[View] </a></p>' ; 
+                echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:"right"  href="http://localhost/canoane/unic.php?id=' . $b . '">[View] </a></p>' ; 
 
                 echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a><br>';
 

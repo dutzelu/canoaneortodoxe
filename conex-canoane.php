@@ -2,7 +2,11 @@
 
 $regex_nr = '/\d+/m';
 $regex = '/\s?\(.*\)/m';
-
+$id_capitol="";
+$id_canon_conex="";
+$nr_canon="";
+$canoane_cu_link = "";
+$id_uri_canoane_conex = "";
 
 // Preiau din text toate paragrafele cu Conexiuni:()
 
@@ -27,11 +31,7 @@ preg_match_all($regex, $text, $rezultate_conexiuni, PREG_SET_ORDER, 0);
 
         // var_dump ($canoane_sinod);
 
-        $id_capitol="";
-        $id_canon_conex="";
-        $nr_canon="";
-        $canoane_cu_link = "";
-        $id_uri_canoane_conex = "";
+
       
         // iau fiecare capitol (canoane pe sinod) în parte 
   
@@ -114,7 +114,7 @@ preg_match_all($regex, $text, $rezultate_conexiuni, PREG_SET_ORDER, 0);
     $text = str_replace("(","", $text); // scot (
     $text = str_replace(")","", $text); // scot )
 
-    echo preg_replace($conexiuni_simple, $conexiuni_cu_link, $text);
+    $links = preg_replace($conexiuni_simple, $conexiuni_cu_link, $text);
     error_reporting(E_ALL);
 
 

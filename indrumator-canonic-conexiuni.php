@@ -46,7 +46,7 @@ if ( isset($_POST['tema']) ) {
 <?php
     // Continui while loop-ul
 
-         echo '<h1>Canoane despre: <span class="cuvant-cheie-rosu">' . $cuvant_cheie . '</span></h1>';
+         echo '<h1>Temă: <span class="cuvant-cheie-rosu">' . $cuvant_cheie . '</span></h1>';
          echo '<a href="http://localhost/canoane/indrumator-canonic.php?litera=A">←Îndrumător canonic</a>';
      
 

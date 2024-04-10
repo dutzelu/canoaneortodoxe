@@ -85,6 +85,7 @@
                         echo '<p class="conexiuni-repertoriu">';
                    
                         include "conex-canoane.php";
+                        echo $links;
                         echo '</p>';
 
                         
@@ -93,7 +94,7 @@
 
                         $url_cap = creare_url_din_titlu ($continut_cap);
 
-                        echo '<p style="margin-top:14px;"><a class="btn btn-outline-primary btn-sm" href="http://localhost/canoane/capitol.php/' . $url_cap . '?id=' . $id_cap . '">Capitol + canoane »</a></p>';
+                        echo '<p style="margin-top:14px;"><a class="btn btn-outline-primary btn-sm" href="http://localhost/canoane/repertoriu.php/' . $url_cap . '-' . $id_cap . '">Capitol + canoane »</a></p>';
 
                         echo "</li>";
                     }

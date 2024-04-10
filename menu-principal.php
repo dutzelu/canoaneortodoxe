@@ -9,16 +9,16 @@
 
             <!-- <p><a href="http://localhost/canoane/admin/edit.php/hirotonia-episcopului?id=1">Administrare</a></p> -->
 
-            <p><a href="http://localhost/canoane/">Prima pagină</a> | <a href="http://localhost/canoane/despre.php">Despre proiect</a> | <a  href="http://localhost/canoane/despre.php">Contact</a> </p>
+            <p><a href="http://localhost/canoane/">Prima pagină</a> | <a href="http://localhost/canoane/despre.php">Despre proiect</a> | <a href="http://localhost/canoane/home.php">Home</a>  | <a  href="http://localhost/canoane/despre.php">Contact</a> </p>
                 
    
 
             <p class="badge bg-secondary">Instrumente de cercetare</p>       
             <ul>
-                <a class="dropdown-item" href="http://localhost/canoane/cautare-generala.php"><li>Căutare generală</li></a>
-                <a class="dropdown-item" href="http://localhost/canoane/cautare.php"><li>Căutare în canoane</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane/cautare-generala"><li>Căutare generală</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane/cautare"><li>Căutare în canoane</li></a>
                 <a class="dropdown-item" href="http://localhost/canoane/indice-canonic.php?litera=A"><li>Indice Canonic</li></a>
-                <a class="dropdown-item" href="http://localhost/canoane/repertoriu-canonic.php"><li>Repertoriu Canonic</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane/repertoriu-canonic"><li>Repertoriu Canonic</li></a>
                 <a class="dropdown-item" href="http://localhost/canoane/indrumator-canonic.php?litera=A"><li>Îndrumător Canonic</li></a>
                 
                 </ul>
@@ -80,6 +80,7 @@
                 <a class="dropdown-item" href="http://localhost/canoane?nume=nichifor-marturisitorul"><li>Nichifor Marturisitorul</li></a>
                 <a class="dropdown-item" href="http://localhost/canoane?nume=nicolae-constantinopol"><li>Nicolae al Constantinopolului</li></a>
                 <a class="dropdown-item" href="http://localhost/canoane?nume=prescriptii-canonice"><li>Prescripții canonice</li></a>
+                <a class="dropdown-item" href="http://localhost/canoane?nume=scrisori"><li>Scrisori</li></a>
             </ul>
 
         </div>

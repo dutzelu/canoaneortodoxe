@@ -86,20 +86,12 @@ $extra_linkuri = "";
                     $Nume = $row['Nume'];
                     $Denumire = $row['DenumireExplicativa'];
                     $Continut = $row['Continut'];
-
-                    if (strlen($Continut) > 200  ) 
-                    {
-                      $Continut = wordwrap($Continut, 200);
-                      $Continut = substr($Continut, 0, strpos($Continut, "\n"));
-                      $Continut = $Continut . '<a href="https://localhost/canoane/page.php/' . creare_url_din_titlu($Denumire) . '?id=' . $id . '"> (continuare »)</a>';
-                    }
-                  
                     $Pedeapsa = $row['Pedeapsa'];
                     $Conexiuni = $row['Conexiuni'];
 
                     echo '<tr class="clickable-row">';
                         echo '<td width="10%">' . $Nume . '</a></td>';
-                        echo '<td width="30%"><a href="https://localhost/canoane/page.php/' . creare_url_din_titlu($Denumire) . '?id=' . $id . '">' . $Denumire . '</a></td>';
+                        echo '<td width="30%"><a href="https://localhost/canoane/unic.php/' . creare_url_din_titlu($Denumire) . '-' . $id . '">' . $Denumire . '</a></td>';
                         echo '<td width="60%">' . $Continut . '</td>';
                         // echo '<td>' . $Pedeapsa . '</td>';
                         // echo '<td>' . $Conexiuni . '</td>';

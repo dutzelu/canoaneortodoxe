@@ -83,7 +83,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
             if (!empty($rows)) {
     
-            echo '<p><span class="badge bg-primary fs-6">Canoane</span></p>';
+            echo '<p><span class="badge bg-primary">Canoane</span></p>';
             echo '<ul class="rezultat_cautare_canoane">';
             foreach ($rows as $row) {
                 $id_canon = $row['id'];
@@ -95,7 +95,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 echo '<li class="titlu_cautari">
                 
                 <span class="badge bg-secondary">' . $nume . '</span>
-                <a href="http://localhost/canoane/page.php/'. $url_articol . '?id=' . $id_canon . '&cautare='. $cautare . '">' .$row['DenumireExplicativa'] . ' »</a></li>';
+                <a href="http://localhost/canoane/unic.php/'. $url_articol . '-' . $id_canon . '?cautare='. $cautare . '">' .$row['DenumireExplicativa'] . ' »</a></li>';
             
                 // afisarea paragraf care cuprinde cuvantul cautat
 
@@ -126,7 +126,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
         
         if (!empty($rows)) {
-            echo '<p><span class="badge bg-info fs-6">Îndrumător canonic</span></p>';
+            echo '<p><span class="badge bg-info ">Îndrumător canonic</span></p>';
             echo "<ul>";
             foreach ($rows as $row) {
                 $id_indrum = $row['id'];
@@ -167,7 +167,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
         
         if (!empty($rows)) {
-            echo '<p><span class="badge bg-success fs-6">Indice canonic</span></p>';
+            echo '<p><span class="badge bg-success ">Indice canonic</span></p>';
             echo "<ul>";
             foreach ($rows as $row) {
                 $id_indrum = $row['id'];
@@ -193,7 +193,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
         
         if (!empty($rows)) {
-            echo '<p><span class="badge bg-warning fs-6">Repertoriu canonic</span></p>';
+            echo '<p><span class="badge bg-warning ">Repertoriu canonic</span></p>';
             echo "<ul>";
             foreach ($rows as $row) {
                 $id_cap = $row['id'];
@@ -202,7 +202,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 $prima_litera = ucfirst(substr(replaceSpecialChars($continut),0,1));
                 $url_cap = creare_url_din_titlu ($continut);
 
-                echo '<li class="titlu_cautari"><a href="http://localhost/canoane/capitol.php/' . $url_cap . '?id=' . $id_cap . '">' .$continut .'</a></li>';
+                echo '<li class="titlu_cautari"><a href="http://localhost/canoane/repertoriu.php/' . $url_cap . '-' . $id_cap . '">' .$continut .'</a></li>';
             }
             echo "</ul>";
         }
