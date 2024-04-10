@@ -28,7 +28,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
-    
 
     
 </head>
@@ -47,18 +46,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
  
 <h1 class="titlu">Căutare generală (în canoane, indice, repertoriu, îndrumător)</h1>
-<p class="mb-4">Folosiți la căutare cuvinte cheie, 1-2, maxim 3, pentru a obține rezultatele dorite. Încercați mai multe variante ale aceluiași cuvânt. De exemplu pentru Sfânta Împărtășanie, căutați: "euharistie", "cuminecătură", "cuminecare", "împărtășanie", "împărtășire".
+<p class="mb-4">Folosiți la căutare cuvinte cheie pentru a obține rezultatele dorite. Încercați mai multe variante ale aceluiași cuvânt. De exemplu pentru Sfânta Împărtășanie, căutați: "euharistie", "cuminecătură", "cuminecare", "împărtășanie", "împărtășire".
 
-<form method="post">
-    <div class="row">
-        <div class="col-auto">
-            <input type="text" name="search" class="form-control" placeholder="Caută cuvinte cheie" ><br>
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Caută</button>
-        </div>
-    </div>
-</form>
 
 <div class="rezultatele_cautarii">
 
@@ -94,7 +83,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
                 echo '<li class="titlu_cautari">
                 
-                <span class="badge bg-secondary">' . $nume . '</span>
+                <span class="badge bg-danger">' . $nume . '</span>
                 <a href="http://localhost/canoane/unic.php/'. $url_articol . '-' . $id_canon . '?cautare='. $cautare . '">' .$row['DenumireExplicativa'] . ' »</a></li>';
             
                 // afisarea paragraf care cuprinde cuvantul cautat
@@ -210,7 +199,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 
     }
-
 
      ?>
 

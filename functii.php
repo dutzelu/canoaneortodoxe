@@ -394,6 +394,19 @@ function ellipse($cuvant_cautat, $text_sursa, $nr_cuvinte){
 }
 
 
+// funcție de realizare a liste de cuvinte cheie pentru autocomplete-ul search-ului
+
+function autocomplete () {
+
+  global $conn, $lista_cuvinte;
+  $lista_cuvinte = NULL;
+  $sql = 'Select cuvant_cheie From indice_canonic UNION Select cuvant_cheie From indrumator_canonic;';
+  $rezultate = mysqli_query($conn, $sql);
+  
+  while ($data = mysqli_fetch_assoc($rezultate)) {
+    $lista_cuvinte .= '"' . trim(mb_strtolower($data['cuvant_cheie'])) . '",';
+  }
+}
 
 
 ?>

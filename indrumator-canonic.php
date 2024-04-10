@@ -155,7 +155,6 @@ $extra_linkuri = "";
         }    
         
         echo "</ul>";
-                
 include "footer.php";
 
 ?>

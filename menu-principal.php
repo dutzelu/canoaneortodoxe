@@ -1,3 +1,4 @@
+
 <div class="menu-principal">
 
         <div class="logo">
@@ -9,14 +10,44 @@
 
             <!-- <p><a href="http://localhost/canoane/admin/edit.php/hirotonia-episcopului?id=1">Administrare</a></p> -->
 
-            <p><a href="http://localhost/canoane/">Prima pagină</a> | <a href="http://localhost/canoane/despre.php">Despre proiect</a> | <a href="http://localhost/canoane/home.php">Home</a>  | <a  href="http://localhost/canoane/despre.php">Contact</a> </p>
+
+            <form method="post" autocomplete="off" action="http://localhost/canoane/cautare-generala.php" class="mb-2">
+                <div class="row">
+
+                    <div class="col-auto">
+
+                        <div class="input-group">
+                            <div class="autocomplete">
+                                <input type="text" name="search" class="form-control" placeholder="Caută cuvinte cheie" id="autocomplete"><br>
+                            </div>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Caută</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+
+            <?php autocomplete();?>
+
+            <!-- script autocomplete --> 
+
+            <script type="text/javascript" src="http://localhost/canoane/js/autocomplete.js"></script>
+            <script type="text/javascript">
+                var cuvinteCheie = [<?php echo $lista_cuvinte; ?>];
+                autocomplete(document.getElementById("autocomplete"), cuvinteCheie);
+            </script>
                 
+            
    
+            <p><a href="http://localhost/canoane/">Prima pagină</a> | <a href="http://localhost/canoane/despre.php">Despre proiect</a> | <a href="http://localhost/canoane/home.php">Home</a>  | <a  href="http://localhost/canoane/despre.php">Contact</a> </p>
 
             <p class="badge bg-secondary">Instrumente de cercetare</p>       
             <ul>
-                <a class="dropdown-item" href="http://localhost/canoane/cautare-generala"><li>Căutare generală</li></a>
-                <a class="dropdown-item" href="http://localhost/canoane/cautare"><li>Căutare în canoane</li></a>
+                <!-- <a class="dropdown-item" href="http://localhost/canoane/cautare-generala"><li>Căutare generală</li></a> -->
+                <!-- <a class="dropdown-item" href="http://localhost/canoane/cautare"><li>Căutare în canoane</li></a> -->
                 <a class="dropdown-item" href="http://localhost/canoane/indice-canonic.php?litera=A"><li>Indice Canonic</li></a>
                 <a class="dropdown-item" href="http://localhost/canoane/repertoriu-canonic"><li>Repertoriu Canonic</li></a>
                 <a class="dropdown-item" href="http://localhost/canoane/indrumator-canonic.php?litera=A"><li>Îndrumător Canonic</li></a>
