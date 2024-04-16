@@ -1,5 +1,8 @@
 <?php
 include "../db.php";
+if(isset($_SESSION['username'])){
+    include "../functii.php";
+    include "../titluri-pagini.php"; 
 
  
 $b = $_GET['id'];
@@ -40,4 +43,4 @@ echo "Problem updating record. MySQL Error: " . mysql_error();}
 
 header('Location:../admin/edit.php/' . '?id=' . $b );
   
-?>
+}?>

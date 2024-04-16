@@ -309,8 +309,14 @@ function afiseaza_canon ($id_canon) {
             $prescurtare=$data2['prescurtare'];
             $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
           
-            echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
+            echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span> ';
 
+            if(isset($_SESSION['username'])){
+              echo '<a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
+            } else {
+              echo "</p>";
+            }
+            
             echo '<h2 class="titlu_canon"><a href="http://localhost/canoane/unic.php/'. $url_articol . '-'. $id_canon . '">' .$data['DenumireExplicativa'] .' »</a>
             </h2>';
 

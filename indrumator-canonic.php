@@ -142,8 +142,11 @@ $extra_linkuri = "";
 
             $id_indice = explode (' ', replaceSpecialChars($cuvant_cheie) );
             
-            echo '<li id="' . strtolower($id_indice[0]) . '" class="list-group-item"><strong>' . $cuvant_cheie . '</strong> '.
-            ' <a href="http://localhost/canoane/admin/edit-indrumator.php/?id=' . $id_cuvant . '" style="color:red;">[edit]</a>' . "<br>";
+            echo '<li id="' . strtolower($id_indice[0]) . '" class="list-group-item"><strong>' . $cuvant_cheie . '</strong> ';
+
+            if(isset($_SESSION['username'])){
+               echo ' <a href="http://localhost/canoane/admin/edit-indrumator.php/?id=' . $id_cuvant . '" style="color:red;">[edit]</a>' . "<br>";
+            } 
  
             echo '<div class="indrumator">' . $continut . '</div>';
             

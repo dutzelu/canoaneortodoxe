@@ -1,6 +1,6 @@
 <?php
 include "../db.php";
-
+if(isset($_SESSION['username'])){
  
 $b = $_GET['id'];
 
@@ -31,4 +31,4 @@ echo "Problem updating record. MySQL Error: " . mysql_error();}
 
 header('Location:../admin/edit-indrumator.php/' . '?id=' . $b );
   
-?>
+} ?>

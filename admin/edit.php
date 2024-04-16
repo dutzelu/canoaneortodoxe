@@ -2,8 +2,9 @@
 <?php 
 
 include "../db.php";
-include "../functii.php";
-include "../titluri-pagini.php"; 
+if(isset($_SESSION['username'])){
+    include "../functii.php";
+    include "../titluri-pagini.php"; 
 
 ?>
 
@@ -110,4 +111,6 @@ include "../titluri-pagini.php";
     });
 </script>
 
-<?php include "../footer.php"; ?>
+<?php include "../footer.php"; 
+
+}?>

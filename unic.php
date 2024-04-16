@@ -98,7 +98,12 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
                 $talcuire = $data["Talcuire"];
                 $simfonie = $data["Simfonie"];
  
-                echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
+                echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span> ';
+                
+                if(isset($_SESSION['username'])){
+                    echo '<a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
+                } else {echo "</p>";}
+
                 echo '<h1 class="titlu_canon">' . $data['DenumireExplicativa'] .'</h1>';
        
                 if ( $id_titlu_capitol !== 0) {

@@ -78,9 +78,13 @@ include "titluri-pagini.php";
 
                             echo 
                             '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span><span class="denumire">' 
-                            .'<a href="http://localhost/canoane/unic.php/'. $url_articol . '-' . $id_canon . '">' .$data['DenumireExplicativa'] .'</a></span> <a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'
+                            .'<a href="http://localhost/canoane/unic.php/'. $url_articol . '-' . $id_canon . '">' .$data['DenumireExplicativa'] .'</a></span>';
                             
-                            .'<div class="continut">'.$data['Continut'].'</div>';
+                            if(isset($_SESSION['username'])){
+                                echo ' <a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>';
+                            } else {echo '</p>';}
+
+                            echo '<div class="continut">'.$data['Continut'].'</div>';
 
                              
 

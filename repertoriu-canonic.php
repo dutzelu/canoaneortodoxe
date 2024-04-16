@@ -79,9 +79,11 @@
                         $conexiuni_cap = $data1['conexiuni'];
                         $anexe = $data1['anexe'];
 
-                        echo '<li class="list-group-item"><strong>' . 'Cap. ' . $nume_cap . ":</strong>" . " " . $continut_cap . 
-                        ' <a href="http://localhost/canoane/admin/edit-repertoriu.php/?id=' . $id_cap . '" style="color:red;">[edit]</a>' . "<br>";
-
+                        echo '<li class="list-group-item"><strong>' . 'Cap. ' . $nume_cap . ":</strong>" . " " . $continut_cap;
+                        
+                        if(isset($_SESSION['username'])){
+                            echo ' <a href="http://localhost/canoane/admin/edit-repertoriu.php/?id=' . $id_cap . '" style="color:red;">[edit]</a>' . "<br>";
+                        } else {echo "<br>";}
 
                         $text="(" . $data1['conexiuni'] . ")";
                         

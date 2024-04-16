@@ -82,7 +82,11 @@ include "titluri-pagini.php";
         $id_uri_canoane_conex = "";
 
         echo '<a href="http://localhost/canoane/repertoriu-canonic.php"><span class="badge bg-secondary">Repertoriu Canonic</span> <span class="badge bg-primary">' . $nume_titlu . " </span></a>";
-        echo '<h3 class="capitol"><strong>' . 'Cap. '. $nume_cap . ": </strong>" . $continut_cap . "</h3>   " . '<a href="http://localhost/canoane/admin/edit-repertoriu.php/?id=' . $id_cap . '"  style="color:red;">[edit]</a>' . "<br>";
+        echo '<h3 class="capitol"><strong>' . 'Cap. '. $nume_cap . ": </strong>" . $continut_cap . "</h3>   ";
+        
+        if(isset($_SESSION['username'])){
+            echo '<a href="http://localhost/canoane/admin/edit-repertoriu.php/?id=' . $id_cap . '"  style="color:red;">[edit]</a>' . "<br>";
+        }
 
     }    
     

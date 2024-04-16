@@ -1,10 +1,14 @@
 
 <?php 
 
-$id = $_GET['id'];
+
+
 include "../db.php";
-include "../functii.php";
-include "../titluri-pagini.php"; 
+if(isset($_SESSION['username'])){
+    include "../functii.php";
+    include "../titluri-pagini.php"; 
+$id = $_GET['id'];
+
 
 ?>
 
@@ -80,5 +84,7 @@ include "../titluri-pagini.php";
                                 <button class="btn btn-primary" type="submit" name="submit">Modifica</button>
             
                             </form>
-                                 
- 
+
+<?php include "../footer.php"; 
+
+}?>
