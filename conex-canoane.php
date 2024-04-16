@@ -15,8 +15,8 @@ $conexiuni_simple = [];
 
 preg_match_all($regex, $text, $rezultate_conexiuni, PREG_SET_ORDER, 0);
 
-  // var_dump ($rezultate_conexiuni);
-  // iau fiecare paragraf unic cu Conexiuni: ()
+// iau fiecare paragraf unic cu Conexiuni: ()
+
     foreach ($rezultate_conexiuni as $a => $b) {
 
         $conexiune = $rezultate_conexiuni[$a]['0'];
@@ -44,9 +44,12 @@ preg_match_all($regex, $text, $rezultate_conexiuni, PREG_SET_ORDER, 0);
         $capitol = preg_replace("#,#", "", $capitol);
         $capitol = trim($capitol);
  
- 
-        $sql_capitol = "SELECT * FROM `titluri_capitole` WHERE `prescurtare` LIKE '%$capitol%'";
-        $rez_capitol = mysqli_query($conn, $sql_capitol);
+        $capitol_p = "%$capitol%";
+        $sql_capitol = "SELECT * FROM `titluri_capitole` WHERE `prescurtare` LIKE ?";
+        $stmt = $conn->prepare($sql_capitol);
+        $stmt->bind_param('s', $capitol_p);
+        $rez_capitol = $stmt->execute();
+        $rez_capitol = $stmt->get_result();
 
 
         while ($data3 = mysqli_fetch_assoc($rez_capitol)){   
@@ -55,8 +58,11 @@ preg_match_all($regex, $text, $rezultate_conexiuni, PREG_SET_ORDER, 0);
 
         // iau id-ul capitolului și aflu id_început
     
-        $sql_id_inceput= "SELECT `prescurtare`,`id_inceput` FROM `titluri_capitole` WHERE `id`=$id_capitol";
-        $rez_id_inceput = mysqli_query($conn, $sql_id_inceput);
+        $sql_id_inceput= "SELECT `prescurtare`,`id_inceput` FROM `titluri_capitole` WHERE `id`=?";
+        $stmt = $conn->prepare($sql_id_inceput);
+        $stmt->bind_param('i', $id_capitol);
+        $rez_id_inceput = $stmt->execute();
+        $rez_id_inceput = $stmt->get_result();
 
         while ($data = mysqli_fetch_assoc($rez_id_inceput)){   
             $id_inceput= $data['id_inceput']; 
@@ -79,8 +85,11 @@ preg_match_all($regex, $text, $rezultate_conexiuni, PREG_SET_ORDER, 0);
 
                  // iau din baza de date slug-ul id-ului        
               
-                $sql_id="SELECT * FROM `canoane` WHERE `id`=$id_canon_conex";
-                $rezultate2=mysqli_query($conn, $sql_id);
+                $sql_id="SELECT * FROM `canoane` WHERE `id`=?";
+                $stmt = $conn->prepare($sql_id);
+                $stmt->bind_param('i', $id_canon_conex);
+                $rezultate2 = $stmt->execute();
+                $rezultate2 = $stmt->get_result();
                 
                   while ($data2 = mysqli_fetch_assoc($rezultate2)){    
                     $titlu_canon = $data2['DenumireExplicativa'];

@@ -52,8 +52,8 @@ $extra_linkuri = "";
 
 ?>
 
-<h1 class="titlu">Căutare în toate cele 960 de canoane</h1>
-<p class="mb-5">Pentru rezultate complete în cercetarea canoanelor vă recomandăm să folosiți funcția de căutare împreună cu <a href="http://localhost/canoane/indice-canonic.php?litera=A">indicele canonic</a> și cu <a href="http://localhost/canoane/repertoriu-canonic.php">repertoriul canonic</a>.</p>
+<h1 class="titlu mb-4">Căutare în toate cele 960 de canoane</h1>
+
 
 
 

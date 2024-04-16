@@ -13,6 +13,8 @@ if (isset($_GET['id'])) {
         // interogarea 1 pentru canon
 
         while ($data = mysqli_fetch_assoc($rezultate2)){    
+
+                $url = creare_url_din_titlu($data['DenumireExplicativa']);
      
             // querry după categorie canon, slug și numerele celorlalte canoane
             $sql_cap="
@@ -33,9 +35,9 @@ if (isset($_GET['id'])) {
                 $prescurtare = $data2['prescurtare'];
                 
  
-                echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:"right"  href="http://localhost/canoane/unic.php?id=' . $b . '">[View] </a></p>' ; 
+                echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:"right"  href="http://localhost/canoane/unic.php/' . $url . '-' . $b . '">[View] </a></p>' ; 
 
-                echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a><br>';
+                echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a><br>';
 
                 if ($nr_canoane>1) {
                     echo '<p><span class="bold">Navighează: </span>';

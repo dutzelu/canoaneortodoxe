@@ -10,7 +10,10 @@ a {text-decoration: none;}
   margin: 0 0 10px 0;
   color: #3765c3;
 }
-.menu-principal {margin:40px;}
+
+.float-left {float:left; margin-right:20px;}
+
+.menu-principal {margin:5%;}
 .menu-principal ol {padding:0 20px;}
 .dropdown-item {padding: .25rem 0!important;white-space:normal;}
 .titlu_canon {font-size: 21px;font-weight: bold;}

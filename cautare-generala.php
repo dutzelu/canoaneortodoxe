@@ -51,28 +51,28 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 <div class="rezultatele_cautarii">
 
-<?php if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {?>
+<?php if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
-    <p class="bg-light p-2">Rezultate:<b> <?php echo $cautare;?></b></p>
 
-    <div class="p-2">
         
-        
-        <?php 
 
             // Căutare în Canoane (Denumirea Explicativa + Conținut)
 
             $cautare_cu_tag = "%$cautare%"; // prepare the $name variable 
-            $sql = "SELECT * FROM canoane Where `DenumireExplicativa` LIKE ? UNION SELECT * FROM canoane Where `Continut`LIKE ? ORDER BY `id` ASC; "; // SQL with parameters
+            $sql = "SELECT * FROM canoane Where `DenumireExplicativa` LIKE ? UNION SELECT * FROM canoane Where `Continut` LIKE ? ORDER BY `id` ASC; "; // SQL with parameters
             $stmt = $conn->prepare($sql); 
             $stmt->bind_param("ss",  $cautare_cu_tag,  $cautare_cu_tag); // here we can use only a variable
             $stmt->execute();
             $result = $stmt->get_result(); // get the mysqli result
             $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
 
+            echo '<p class="bg-light p-2">Căutare după: <b>'  . $cautare . '</b></p>';
+
+            echo '<div class="p-2">';
+
             if (!empty($rows)) {
     
-            echo '<p><span class="badge bg-primary">Canoane</span></p>';
+            echo '<p><span class="badge bg-primary">Canoane </span> (' . count($rows) . (count($rows)==1 ? ' rezultat' : ' rezultate') . ')</p>';
             echo '<ul class="rezultat_cautare_canoane">';
             foreach ($rows as $row) {
                 $id_canon = $row['id'];
@@ -115,7 +115,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
         
         if (!empty($rows)) {
-            echo '<p><span class="badge bg-info ">Îndrumător canonic</span></p>';
+            echo '<p class="mt-4"><span class="badge bg-info ">Îndrumător canonic</span> (' . count($rows) . (count($rows)==1 ? ' rezultat' : ' rezultate') . ')</p>';
             echo "<ul>";
             foreach ($rows as $row) {
                 $id_indrum = $row['id'];
@@ -156,7 +156,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
         
         if (!empty($rows)) {
-            echo '<p><span class="badge bg-success ">Indice canonic</span></p>';
+            echo '<p><span class="badge bg-success ">Indice canonic</span> ('. count($rows) . (count($rows)==1 ? ' rezultat' : ' rezultate') .')</p>';
             echo "<ul>";
             foreach ($rows as $row) {
                 $id_indrum = $row['id'];
@@ -182,7 +182,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
         
         if (!empty($rows)) {
-            echo '<p><span class="badge bg-warning ">Repertoriu canonic</span></p>';
+            echo '<p><span class="badge bg-warning ">Repertoriu canonic</span> ('. count($rows) . (count($rows)==1 ? ' rezultat' : ' rezultate') .')</p>';
             echo "<ul>";
             foreach ($rows as $row) {
                 $id_cap = $row['id'];

@@ -1,6 +1,6 @@
 <div class="menu-principal">
 
-        <p><a href="http://localhost/canoane/index.php/?nume=apostolice">Prima pagină</a></p>
+        <p><a href="http://localhost/canoane/index.php">Prima pagină</a></p>
 
         <p class="badge badge-dark">Sinoadele Ecumenice</p>       
             <ul>

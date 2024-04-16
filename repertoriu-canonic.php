@@ -63,9 +63,13 @@
                     echo '<div class="panel">' . '<ul class="list-group">';
 
                     // iau fiecare titlu în parte și afișez capitolele aferente lui
-                    $sql_cap = "SELECT * FROM `capitole_repertoriu_canonic` WHERE `nr_titlu` = $id_titlu ORDER BY `nume`";
+                    $sql_cap = "SELECT * FROM `capitole_repertoriu_canonic` WHERE `nr_titlu` = ? ORDER BY `nume`";
+
+                    $stmt = $conn->prepare($sql_cap);
+                    $stmt->bind_param('i', $id_titlu);
+                    $rez_cap = $stmt->execute();
+                    $rez_cap = $stmt->get_result();
                     
-                    $rez_cap = mysqli_query($conn, $sql_cap);
 
                     while ($data1 = mysqli_fetch_assoc($rez_cap)) {
 

@@ -68,9 +68,14 @@ $extra_linkuri = "";
 
         // afisez cuvintele cheie si canoanele
 
-        $sql_litera= "SELECT * FROM `indice_canonic` WHERE `litera` = '$litera_link' ORDER BY cuvant_cheie"; 
-        $rez_litera = mysqli_query($conn, $sql_litera);
- 
+        $sql_litera= "SELECT * FROM `indice_canonic` WHERE `litera` = ? ORDER BY cuvant_cheie"; 
+
+        $stmt = $conn->prepare($sql_litera);
+        $stmt->bind_param('s', $litera_link);
+        $rez_litera = $stmt->execute();
+        $rez_litera = $stmt->get_result();
+
+
         echo '<ul class="list-group">';
         while ($data2 = mysqli_fetch_assoc($rez_litera)){   
        

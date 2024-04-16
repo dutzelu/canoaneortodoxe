@@ -51,35 +51,33 @@ function transformers ($conexiune_simpla) {
             $capitol = ltrim($capitol,''); // scot spațiile de la început
             $capitol = rtrim($capitol,'');// scot spațiile de la sfârșit
 
-            // echo "<pre>";
-            // var_dump($capitol);
-            // echo "</pre>";
-
-            $sql_capitol = "SELECT * FROM `titluri_capitole` WHERE `prescurtare` LIKE '%$capitol%'";
-            $rez_capitol = mysqli_query($conn, $sql_capitol);
+            $capitol_p = "%$capitol%";
+            $sql_capitol = "SELECT * FROM `titluri_capitole` WHERE `prescurtare` LIKE ?";
+            $stmt = $conn->prepare($sql_capitol);
+            $stmt->bind_param('s', $capitol_p);
+            $rez_capitol = $stmt->execute();
+            $rez_capitol = $stmt->get_result();
 
 
             while ($data3 = mysqli_fetch_assoc($rez_capitol)){   
               $id_capitol = $data3['id'];
-              // echo "<pre>";
-              // var_dump($id_capitol);
-              // echo "</pre>";
             }
 
             // iau id-ul capitolului și aflu id_început
 
-            $sql_id_inceput= "SELECT `prescurtare`,`id_inceput` FROM `titluri_capitole` WHERE `id`=$id_capitol";
-            $rez_id_inceput = mysqli_query($conn, $sql_id_inceput);
+            $sql_id_inceput= "SELECT `prescurtare`,`id_inceput` FROM `titluri_capitole` WHERE `id`=?";
+
+            $stmt = $conn->prepare($sql_id_inceput);
+            $stmt->bind_param('i', $id_capitol);
+            $rez_id_inceput = $stmt->execute();
+            $rez_id_inceput = $stmt->get_result();
 
             while ($data = mysqli_fetch_assoc($rez_id_inceput)){   
                 $id_inceput= $data['id_inceput']; 
                 $prescurtare = $data['prescurtare']; 
-                // var_dump($prescurtare);
             }
 
             if (preg_match_all($regex_nr, $d, $rezultate_numere, PREG_SET_ORDER, 0)) {
-
-              // var_dump($rezultate_numere);
 
                     // aflu id-ul canonului
             
@@ -89,8 +87,13 @@ function transformers ($conexiune_simpla) {
 
                 // iau din baza de date slug-ul id-ului        
               
-                $sql_id="SELECT * FROM `canoane` WHERE `id`=$id_canon_conex";
-                $rezultate2=mysqli_query($conn, $sql_id);
+                $sql_id="SELECT * FROM `canoane` WHERE `id`=?";
+
+                $stmt = $conn->prepare($sql_id);
+                $stmt->bind_param('i', $id_canon_conex);
+                $rezultate2 = $stmt->execute();
+                $rezultate2 = $stmt->get_result();
+
                 
                   while ($data2 = mysqli_fetch_assoc($rezultate2)){    
                     $titlu_canon = $data2['DenumireExplicativa'];
@@ -178,8 +181,14 @@ function creare_url_din_titlu_cu_id ($titlu_articol, $id_canon) {
 function lista_numere_url ($x, $y, $z) {
 
       global $conn;
-      $sql_ap="SELECT * FROM `canoane` WHERE `nume` LIKE '%$x%' ORDER BY `id`";
-      $rezultate=mysqli_query($conn, $sql_ap);
+      $x_p = "%$x%";
+      $sql_ap="SELECT * FROM `canoane` WHERE `nume` LIKE ? ORDER BY `id`";
+
+      $stmt = $conn->prepare($sql_ap);
+      $stmt->bind_param('s', $x_p);
+      $rezultate = $stmt->execute();
+      $rezultate = $stmt->get_result();
+
       $nav_all='';
 
       echo '<div class="navigheaza">';
@@ -266,8 +275,13 @@ function afiseaza_canon ($id_canon) {
 
     // querry după id pentru canon în baza de date 
     global $conn;
-    $sql_id="SELECT * FROM `canoane` WHERE `id`=$id_canon";
-    $rezultate2=mysqli_query($conn, $sql_id);
+    $sql_id="SELECT * FROM `canoane` WHERE `id`=?";
+
+    $stmt = $conn->prepare($sql_id);
+    $stmt->bind_param('i', $id_canon);
+    $rezultate2 = $stmt->execute();
+    $rezultate2 = $stmt->get_result();
+
 
     // interogarea 1 pentru canon
 
@@ -279,9 +293,12 @@ function afiseaza_canon ($id_canon) {
             FROM canoane
             LEFT JOIN titluri_capitole
             ON canoane.id_titlu_capitol = titluri_capitole.id
-            WHERE canoane.id=$id_canon";
-        
-        $sql_cap_rez=mysqli_query($conn, $sql_cap);
+            WHERE canoane.id=?";
+
+        $stmt = $conn->prepare($sql_cap);
+        $stmt->bind_param('i', $id_canon);
+        $sql_cap_rez = $stmt->execute();
+        $sql_cap_rez = $stmt->get_result();
         
 
         // interogarea 2 pentru categorie canon, slug și numere celorlalte canoane
@@ -297,7 +314,7 @@ function afiseaza_canon ($id_canon) {
             echo '<h2 class="titlu_canon"><a href="http://localhost/canoane/unic.php/'. $url_articol . '-'. $id_canon . '">' .$data['DenumireExplicativa'] .' »</a>
             </h2>';
 
-            echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
+            echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
 
             // afisez continutul canonului, pedeapsa, conexiuni, comentarii si simfonie
         
@@ -333,9 +350,12 @@ function id_uri_canone_din_conexiuni ($conexiuni) {
           $capitol = preg_replace("#,#", "", $capitol);
           $capitol = trim($capitol);
 
-
-          $sql_capitol = "SELECT * FROM `titluri_capitole` WHERE `prescurtare` LIKE '%$capitol%'";
-          $rez_capitol = mysqli_query($conn, $sql_capitol);
+          $capitol_p = "%$capitol%";
+          $sql_capitol = "SELECT * FROM `titluri_capitole` WHERE `prescurtare` LIKE ?";
+          $stmt = $conn->prepare($sql_capitol);
+          $stmt->bind_param('s', $capitol_p);
+          $rez_capitol = $stmt->execute();
+          $rez_capitol = $stmt->get_result();
 
 
           while ($data3 = mysqli_fetch_assoc($rez_capitol)){   
@@ -344,21 +364,21 @@ function id_uri_canone_din_conexiuni ($conexiuni) {
 
     // iau id-ul capitolului și aflu id_început
     
-          $sql_id_inceput= "SELECT `prescurtare`,`id_inceput` FROM `titluri_capitole` WHERE `id`=$id_capitol";
-          $rez_id_inceput = mysqli_query($conn, $sql_id_inceput);
+          $sql_id_inceput= "SELECT `prescurtare`,`id_inceput` FROM `titluri_capitole` WHERE `id`=?";
+
+          $stmt = $conn->prepare($sql_id_inceput);
+          $stmt->bind_param('i', $id_capitol);
+          $rez_id_inceput = $stmt->execute();
+          $rez_id_inceput = $stmt->get_result();
 
           while ($data = mysqli_fetch_assoc($rez_id_inceput)){   
               $id_inceput= $data['id_inceput']; 
               $prescurtare = $data['prescurtare']; 
           }
 
-      // var_dump ($id_inceput);  
-
           $regex_nr = '/\d+/m';
 
         if (preg_match_all($regex_nr, $d, $rezultate_numere, PREG_SET_ORDER, 0)) {
-
-          // var_dump($rezultate_numere);
 
                   // aflu id-ul canonului
           

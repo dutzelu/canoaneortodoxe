@@ -63,10 +63,13 @@ include "titluri-pagini.php";
 
     // Continui codul
 
-    $sql_id_titlu = "SELECT * FROM `titluri_repertoriu_canonic` WHERE `id` = $id_titlu ";
-    $rez_id_titlu = mysqli_query($conn, $sql_id_titlu);
+    $sql_id_titlu = "SELECT * FROM `titluri_repertoriu_canonic` WHERE `id` = ? ";
 
-            
+    $stmt = $conn->prepare($sql_id_titlu);
+    $stmt->bind_param('s', $id_titlu);
+    $rez_id_titlu = $stmt->execute();
+    $rez_id_titlu = $stmt->get_result();
+
    
 
     while ($data = mysqli_fetch_assoc($rez_id_titlu)) {

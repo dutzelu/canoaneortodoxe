@@ -103,7 +103,7 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
        
                 if ( $id_titlu_capitol !== 0) {
 
-                    echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
+                    echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
                     
                      // afisez toate numerele de canoane cu url din categoria respectivă
                     $url_baza="unic.php";
