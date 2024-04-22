@@ -8,13 +8,9 @@ include "titluri-pagini.php";
 //  Afișare articol
 
 $url =  "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$slug_canon = basename($url);
-$regex_slug = '/(.*)-(\d+)/m';
-preg_match_all($regex_slug, $slug_canon, $afla_id, PREG_SET_ORDER, 0);
-
-$id_canon = (int)$afla_id[0][2];
-$alias_canon = $afla_id[0][1];
-
+$slug_canon = parse_url($url, PHP_URL_PATH);
+$slug_canon = explode('/', parse_url($slug_canon, PHP_URL_PATH));
+$slug_canon = end($slug_canon);
 
 $cautare = isset( $_GET['cautare']) ? $_GET['cautare'] : NULL;
 $cuvant_cautat_html = '<b>' . $cautare . '</b>';
@@ -22,9 +18,9 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
         // querry după id pentru canon în baza de date 
    
 
-        $sql_id="SELECT * FROM canoane WHERE id=?";
-        $stmt = $conn->prepare($sql_id);
-        $stmt->bind_param('i', $id_canon);
+        $sql_slug="SELECT * FROM canoane WHERE adresa_url=?";
+        $stmt = $conn->prepare($sql_slug);
+        $stmt->bind_param('s', $slug_canon);
         $rezultate2 = $stmt->execute();
         $rezultate2 = $stmt->get_result();
 
@@ -36,6 +32,7 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
             $titlu_pg = $data['Nume'] . " | " .$data['DenumireExplicativa'];
             $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
             $id_titlu_capitol = (int)$data['id_titlu_capitol'];
+            $id_canon = $data['id'];
         
             // querry după categorie canon, slug și numerele celorlalte canoane
             $sql_cap="  SELECT titlu, slug, prescurtare, id_inceput, id_sfarsit 
@@ -49,14 +46,6 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
             $sql_cap_rez = $stmt->execute();
             $sql_cap_rez = $stmt->get_result();
             
-
-            // verificare daca slug-ul (aliasul) corespunde cu id_articol
-
-              if (trim($url_articol) !== trim($alias_canon)) {
-                trigger_error("Error: URL inexistent", E_USER_ERROR);
-            }
-            
-
             // opresc codul ca să afișez $title_pg și apoi continui
 ?>
 

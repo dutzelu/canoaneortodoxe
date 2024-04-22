@@ -74,7 +74,7 @@ include "functii.php";
 
 <p>Site-ul dedicat Canoanelor Bisericii Ortodoxe este primul proiect al Asociației Ortodoxia Tinerilor și a apărut prima dată în anul 2008 pe site-ul www.canoaneortodoxe.net, care astăzi nu mai există. La vremea respectivă site-ul oferea toată colecția canoanelor împărțite pe categorii în format pdf.</p>
 
-<p>În luna aprilie 2024 am lansat un nou site cu aceeași colecție de canoane, dar data aceasta cu instrumente de cercetare foarte utile și cu <b>conexiuni dinamice pe teme între cele aproximativ 1000 de canoane</b>.</p>
+<p>În luna aprilie 2024 am lansat un nou site cu aceeași colecție de canoane, dar data aceasta cu instrumente de cercetare foarte utile și cu <b>conexiuni dinamice pe teme între cele 907 de canoane</b>.</p>
     </div>
 </div>
 

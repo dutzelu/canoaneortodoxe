@@ -96,12 +96,11 @@ function transformers ($conexiune_simpla) {
 
                 
                   while ($data2 = mysqli_fetch_assoc($rezultate2)){    
-                    $titlu_canon = $data2['DenumireExplicativa'];
+                    $url_canon = $data2['adresa_url'];
                   }  
 
                   // pun linkul la canon
 
-                  $url_canon = creare_url_din_titlu_cu_id ($titlu_canon, $id_canon_conex);
                   $canon_cu_link = '<a href="'. $url_canon .'">' . $nr_canon . ' ' .$capitol . "</a>" . " | " ;
 
                   // concatenez toate linkurile într-un string
@@ -154,27 +153,10 @@ function creare_url_din_titlu ($titlu_articol) {
    
   $titlu_articol = strtolower($titlu_articol);
 
-  return $titlu_articol;
+  return trim($titlu_articol);
 }
 
-function creare_url_din_titlu_cu_id ($titlu_articol, $id_canon) {
- 
-  $titlu_articol = replaceSpecialChars ($titlu_articol);
-  
-  $caractere_select = ['.',',','?'];
-  $caractere_elim = ['','',''];
-  $titlu_articol = str_replace($caractere_select, $caractere_elim, $titlu_articol);
 
-  $titlu_articol = explode (" ",$titlu_articol);
-   
-  $titlu_articol = implode ("-",$titlu_articol);
-  $titlu_articol = str_replace(' ', '', $titlu_articol);
-   
-  $titlu_articol = strtolower($titlu_articol);
-  $titlu_articol = 'http://localhost/canoane/unic.php/' . $titlu_articol . "-" . $id_canon;
-  return $titlu_articol;
-
-}
 
 // Navigație în capitolele canoanelor cu link pe numerele canoanelor pe baza unui id de canon
 
@@ -196,14 +178,14 @@ function lista_numere_url ($x, $y, $z) {
       while ($data = mysqli_fetch_assoc($rezultate)){    
       
           $id_canon = $data['id'];
-          $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
+          $url_articol = $data['adresa_url'];
           $nr_can = rtrim($data['Nume'],$x);
           $nr_can = str_replace (' ', '', $nr_can);
           $id_titlu_capitol = $data['id_titlu_capitol'];
 
         
         if ($id_canon!=$y){
-          $nav ='<a href="http://localhost/canoane/' . $z . "/" . $url_articol . '-' . $id_canon . '">'.$nr_can.'</a>'.', ';
+          $nav ='<a href="http://localhost/canoane/' . $z . "/" . $url_articol . '">'.$nr_can.'</a>'.', ';
         } else {$nav =$nr_can . ', ';}
 
         $nav_all.=$nav; 
@@ -223,7 +205,7 @@ function numere_url_din_categ ($slug) {
 
       $nav_all='';
       global $conn, $nav_all, $nr_canoane;
-      $sql = 'SELECT canoane.id as id_canon, canoane.Nume, canoane.DenumireExplicativa, titluri_capitole.prescurtare, titluri_capitole.id_inceput, titluri_capitole.id_sfarsit
+      $sql = 'SELECT canoane.id as id_canon, canoane.Nume, canoane.DenumireExplicativa, canoane.adresa_url, titluri_capitole.prescurtare, titluri_capitole.id_inceput, titluri_capitole.id_sfarsit
       FROM canoane
       LEFT JOIN titluri_capitole
       ON canoane.id_titlu_capitol = titluri_capitole.id 
@@ -240,13 +222,13 @@ function numere_url_din_categ ($slug) {
       
       while ($data = mysqli_fetch_assoc($result)) {   
         
-        $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
+        $url_articol = $data['adresa_url'];
         $nr_can = rtrim($data['Nume'],$data['prescurtare']);
         $nr_can = str_replace (' ', '', $nr_can);
         $id_canon = $data['id_canon'];
         $nr_canoane = $data['id_sfarsit'] - $data['id_inceput'];
         
-        $nav ='<a href="http://localhost/canoane/unic.php/' . $url_articol . '-' . $id_canon . '">'.$nr_can.'</a>'.', ';
+        $nav ='<a href="http://localhost/canoane/unic.php/' . $url_articol . '">'.$nr_can.'</a>'.', ';
         
         $nav_all.=$nav; 
         
@@ -307,7 +289,7 @@ function afiseaza_canon ($id_canon) {
 
             $nr_canoane = $data2['id_sfarsit'] - $data2['id_inceput'];
             $prescurtare=$data2['prescurtare'];
-            $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
+            $url_articol = $data['adresa_url'];
           
             echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span> ';
 
@@ -317,7 +299,7 @@ function afiseaza_canon ($id_canon) {
               echo "</p>";
             }
             
-            echo '<h2 class="titlu_canon"><a href="http://localhost/canoane/unic.php/'. $url_articol . '-'. $id_canon . '">' .$data['DenumireExplicativa'] .' »</a>
+            echo '<h2 class="titlu_canon"><a href="http://localhost/canoane/unic.php/'. $url_articol . '">' .$data['DenumireExplicativa'] .' »</a>
             </h2>';
 
             echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';

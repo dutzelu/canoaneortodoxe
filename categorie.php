@@ -54,7 +54,7 @@ include "titluri-pagini.php";
              // afisez toate numerele de canoane cu url din categoria respectivă
              
  
-              //  Afișare categorii
+              //  Afișare categorie
 
                 if (isset($_GET['nume'])) {
 
@@ -71,14 +71,14 @@ include "titluri-pagini.php";
                         while ($data = mysqli_fetch_assoc($rezultate)){    
 
                             $id_canon = $data['id'];
-                            $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
+                            $url_articol = trim($data['adresa_url']);
                             $comentarii = $data["Comentarii"];
                             $talcuire = $data["Talcuire"];
                             $simfonie = $data["Simfonie"];
 
                             echo 
                             '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span><span class="denumire">' 
-                            .'<a href="http://localhost/canoane/unic.php/'. $url_articol . '-' . $id_canon . '">' .$data['DenumireExplicativa'] .'</a></span>';
+                            .'<a href="http://localhost/canoane/unic.php/'. $url_articol . '">' .$data['DenumireExplicativa'] .'</a></span>';
                             
                             if(isset($_SESSION['username'])){
                                 echo ' <a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>';

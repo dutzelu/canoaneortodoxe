@@ -64,7 +64,7 @@ if(isset($_SESSION['username'])){
                         while ($data = mysqli_fetch_assoc($rezultate)){    
                            
                             $id_canon = $data['id'];
-                            $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
+                            $url_articol = $data['adresa_url'];
 
                             echo 
                             '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span><span class="denumire">' 
@@ -86,7 +86,7 @@ if(isset($_SESSION['username'])){
 
                             if ($data["Simfonie"]==NULL || $data["Simfonie"]=='-'){echo "";} 
                                 else {echo '<span class="rosu">Simfonie: </span>' .$data['Simfonie']."<br>";}
-                              
+
                             echo '<hr class="linie"';
                                  
                         }

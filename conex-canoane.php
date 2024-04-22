@@ -93,12 +93,12 @@ preg_match_all($regex, $text, $rezultate_conexiuni, PREG_SET_ORDER, 0);
                 
                   while ($data2 = mysqli_fetch_assoc($rezultate2)){    
                     $titlu_canon = $data2['DenumireExplicativa'];
+                    $url_canon = $data2['adresa_url'];
                   }  
 
                   // pun linkul la canon
 
-                  $url_canon = creare_url_din_titlu_cu_id ($titlu_canon, $id_canon_conex);
-                  $canon_cu_link = '<a href="'. $url_canon .'">' . $nr_canon . ' ' .$capitol . "</a>" . " | " ;
+                  $canon_cu_link = '<a href="http://localhost/canoane/unic.php/'. $url_canon .'">' . $nr_canon . ' ' .$capitol . "</a>" . " | " ;
 
                   // concatenez toate linkurile într-un string
                   $canoane_cu_link .= $canon_cu_link ; 

@@ -18,6 +18,7 @@ if(isset ($_POST["submit"]) ) {
   $comentarii = $_POST["comentarii"];
   $talcuire = $_POST["talcuire"];
   $simfonie = $_POST["simfonie"];
+  $adresa_url = $_POST["adresa_url"];
   
 
   $query="UPDATE canoane 
@@ -27,7 +28,8 @@ if(isset ($_POST["submit"]) ) {
               `Conexiuni` = '$conexiuni',         
               `Comentarii` = '$comentarii',   
               `Talcuire` = '$talcuire',         
-              `Simfonie` = '$simfonie'
+              `Simfonie` = '$simfonie',
+              `adresa_url` = '$adresa_url'
           WHERE `id` = '$b';";
   
   

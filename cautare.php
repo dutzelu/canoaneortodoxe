@@ -83,6 +83,7 @@ $extra_linkuri = "";
                 while ($row = mysqli_fetch_assoc($result)) { 
 
                     $id = $row['id'];
+                    $url = $row['adresa_url'];
                     $Nume = $row['Nume'];
                     $Denumire = $row['DenumireExplicativa'];
                     $Continut = $row['Continut'];
@@ -91,7 +92,7 @@ $extra_linkuri = "";
 
                     echo '<tr class="clickable-row">';
                         echo '<td width="10%">' . $Nume . '</a></td>';
-                        echo '<td width="30%"><a href="http://localhost/canoane/unic.php/' . creare_url_din_titlu($Denumire) . '-' . $id . '">' . $Denumire . '</a></td>';
+                        echo '<td width="30%"><a href="http://localhost/canoane/unic.php/' . $url . '">' . $Denumire . '</a></td>';
                         echo '<td width="60%">' . $Continut . '</td>';
                         // echo '<td>' . $Pedeapsa . '</td>';
                         // echo '<td>' . $Conexiuni . '</td>';

@@ -94,6 +94,13 @@ if (isset($_GET['id'])) {
                             else {echo $data['Simfonie'];}
                             ?>"style="width: 100%">
                     </p>
+                    
+                    <p><span class="rosu">Adresa url: </span>
+                    <input class="form-control" type="text" name="adresa_url" value="<?php   
+                            if ($data["adresa_url"]==NULL || $data["adresa_url"]=='-'){echo "";} 
+                            else {echo $data['adresa_url'];}
+                            ?>"style="width: 100%">
+                    </p>
 
                     <button class="btn btn-primary" type="submit" name="submit">Modifica</button>
 

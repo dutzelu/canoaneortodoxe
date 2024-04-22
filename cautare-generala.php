@@ -59,9 +59,16 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             // Căutare în Canoane (Denumirea Explicativa + Conținut)
 
             $cautare_cu_tag = "%$cautare%"; // prepare the $name variable 
-            $sql = "SELECT * FROM canoane Where `DenumireExplicativa` LIKE ? UNION SELECT * FROM canoane Where `Continut` LIKE ? ORDER BY `id` ASC; "; // SQL with parameters
+            $sql = "
+            SELECT * FROM canoane Where `DenumireExplicativa` LIKE ? 
+            UNION 
+            SELECT * FROM canoane Where `Continut` LIKE ?
+            UNION
+            SELECT * FROM canoane Where `Nume` LIKE ? ORDER BY `id` ASC
+
+            ;"; // SQL with parameters
             $stmt = $conn->prepare($sql); 
-            $stmt->bind_param("ss",  $cautare_cu_tag,  $cautare_cu_tag); // here we can use only a variable
+            $stmt->bind_param("sss",  $cautare_cu_tag,  $cautare_cu_tag,  $cautare_cu_tag); // here we can use only a variable
             $stmt->execute();
             $result = $stmt->get_result(); // get the mysqli result
             $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
@@ -77,14 +84,14 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             foreach ($rows as $row) {
                 $id_canon = $row['id'];
                 $nume = $row['Nume'];
-                $url_articol = creare_url_din_titlu ($row['DenumireExplicativa']);
+                $url_articol = $row['adresa_url'];
                 $continut = $row['Continut'];
                 $nr_cuvinte = 12;
 
                 echo '<li class="titlu_cautari">
                 
                 <span class="badge bg-danger">' . $nume . '</span>
-                <a href="http://localhost/canoane/unic.php/'. $url_articol . '-' . $id_canon . '?cautare='. $cautare . '">' .$row['DenumireExplicativa'] . ' »</a></li>';
+                <a href="http://localhost/canoane/unic.php/'. $url_articol . '?cautare='. $cautare . '">' .$row['DenumireExplicativa'] . ' »</a></li>';
             
                 // afisarea paragraf care cuprinde cuvantul cautat
 
@@ -159,13 +166,13 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             echo '<p><span class="badge bg-success ">Indice canonic</span> ('. count($rows) . (count($rows)==1 ? ' rezultat' : ' rezultate') .')</p>';
             echo "<ul>";
             foreach ($rows as $row) {
-                $id_indrum = $row['id'];
+                $id_indcan = $row['id'];
                 $cuvant_cheie = $row['cuvant_cheie'];
                 $id_indice = explode (' ', replaceSpecialChars($cuvant_cheie) );
                 $prima_litera = ucfirst(substr(replaceSpecialChars($cuvant_cheie),0,1));
                 $url_articol = creare_url_din_titlu ($cuvant_cheie);
-    
-                echo '<li class="titlu_cautari"><a href="http://localhost/canoane/indice-canonic.php?litera=' . $prima_litera . '#'. strtolower($id_indice[0]) . '">' .$cuvant_cheie .'</a></li>';
+
+                echo '<li class="titlu_cautari"><a href="http://localhost/canoane/indice-canonic-conexiuni.php/canoane-' . strtolower($id_indice[0]) . '?indice=' . $id_indcan.'">' .$cuvant_cheie .'</a></li>';
             }
             echo "</ul>";
         }
