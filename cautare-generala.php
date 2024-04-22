@@ -42,7 +42,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                     <?php include "menu-principal.php";?>
         </div>
 
-        <div class="col-lg-8 zona-principala">
+        <div class="col-lg-8 zona-principala p-5">
 
  
 <h1 class="titlu">Căutare generală (în canoane, indice, repertoriu, îndrumător)</h1>

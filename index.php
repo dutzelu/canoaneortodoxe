@@ -43,16 +43,50 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                     <?php include "menu-principal.php";?>
         </div>
 
-        <div class="col-lg-8 zona-principala">
+        <div class="col-lg-8 zona-principala p-5">
 
  
-<h1 class="titlu mb-5">Canoanele Bisericii Ortodoxe</h1>
+<h1 class="titlu mb-4">Bine ați venit!</h1>
 
 
+
+<div class="row mb-5">
+    
+    <div class="col-12 col-sm-4 mb-3">
+        <img src="imagini/canoanele-bisericii-ortodoxe-nicolae-floca.jpg" width="100%" alt="Arhid. Prof. Dr. Ioan N. Floca, Canoanele Bisericii Ortodoxe. Note și comentarii., Editura Institutului Bibilic şi de Misiune a Bisericii Ortodoxe Române, Sibiu 2005" class="">
+    </div>
+
+    <div class="col-12 col-sm-8">
+        <p>Acest site conţine toată colecţia de <b>960 de canoane</b> a Bisericii Ortodoxe. Conţinutul este luat în totalitate din lucrarea <em>părintelui Arhid. Prof. Dr. Ioan N. Floca, Canoanele Bisericii Ortodoxe. Note și comentarii.</em>, Editura Institutului Bibilic şi de Misiune a Bisericii Ortodoxe Române, Sibiu 2005, tipărită cu binecuvântarea Prea Fericitului Patriarh Teoctist.</p>
+
+        <p>Aici veţi găsi <b>canoanele ortodoxe împărţite pe cinci categorii</b> la fel ca şi-n lucrarea părintelui Floca:</p>
+        <ul>
+            <li>Canoanele Sfinţilor Apostoli,</li>
+            <li> Canoanele Sinoadelor Ecumenice,</li>
+            <li>Canoanele Sinoadelor Locale,</li>
+            <li> Canoanele Sfinţilor Părinţi și</li>
+            <li>Canoanele Întregitoare</li>
+        </ul>    
+
+        <p>și în plus <b>3 instrumente de cercetare</b> foarte necesare:</p> 
+
+        <ul>
+            <li>Îndrumătorul Canonic</li>
+            <li>Indicele Canonic și</li>
+            <li>Repertoriul canonic</li>
+        </ul>
+        
+        <p>plus două module de căutare care vă vor ajuta să cercetați detaliat temele care vă interesează.</p>
+
+    </div>
+
+</div>
 
 <div class="row g-3">
 
-    <div class="col">
+<h2>Teme de interes</h2>
+
+    <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100">
         <img src="http://localhost/canoane/imagini/intreita-afundare.jpg" class="card-img-top" alt="...">
         <div class="card-body">
@@ -63,7 +97,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         </div>
     </div>
 
-     <div class="col">
+     <div class="col-12 col-sm-6 col-md-4">
          <div class="card h-100">
          <img src="http://localhost/canoane/imagini/impartasire.jpg" class="card-img-top" alt="...">
          <div class="card-body">
@@ -74,24 +108,18 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
          </div>
      </div>           
 
-    <div class="col">
+    <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100">
         <img src="http://localhost/canoane/imagini/ingenuncherea.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Când să îngenunchem?</h5>
             <p class="card-text">În zi de duminică nu ar trebuie să îngenunchem în biserică</p>
-            <a href="https://localhost/canoane/unic.php/randuiala-ingenuncherii-in-biserica-267" class="btn btn-primary">Citește</a>
+            <a href="http://localhost/canoane/unic.php/randuiala-ingenuncherii-in-biserica-267" class="btn btn-primary">Citește</a>
         </div>
         </div>
     </div>
 
-</div>
-
-<!-- Canoane despre desfrânare-->
-            
-<div class="row mt-4 g-3">
-
-    <div class="col">
+    <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100">
         <img src="http://localhost/canoane/imagini/adulter.jpg" class="card-img-top" alt="...">
         <div class="card-body">
@@ -102,7 +130,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         </div>
     </div>
 
-     <div class="col">
+     <div class="col-12 col-sm-6 col-md-4">
          <div class="card h-100">
          <img src="http://localhost/canoane/imagini/pariuri-sportive.png" class="card-img-top" alt="...">
          <div class="card-body">
@@ -113,7 +141,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
          </div>
      </div>           
 
-     <div class="col">
+     <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100">
         <img src="http://localhost/canoane/imagini/casatorie.jpg" class="card-img-top" alt="...">
         <div class="card-body">
@@ -124,12 +152,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         </div>
     </div>
 
-
-</div>
-            
-<div class="row mt-4 g-3">
-
-    <div class="col">
+    <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100">
         <img src="http://localhost/canoane/imagini/anatema.jpg" class="card-img-top" alt="...">
         <div class="card-body">
@@ -140,11 +163,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         </div>
     </div>
 
-     <div class="col">
+     <div class="col-12 col-sm-6 col-md-4">
          <div class="card h-100">
          <img src="http://localhost/canoane/imagini/caterisire.jpg" class="card-img-top" alt="...">
          <div class="card-body">
-             <h5 class="card-title">Caterisirea a clericilor</h5>
+             <h5 class="card-title">Caterisirea clericilor</h5>
              <p class="card-text">Caterisirea înseamnă luarea tuturor drepturilor de a sluji vreo lucrare sfințitoare a Bisericii și trecerea vinovatului în rândul mirenilor. Caterisirea înseamnă decăderea din har, apostazia clerului caterisit, acesta nemaiavând darul de a săvârși Sfintele Taine</p>
              <a href="http://localhost/canoane/indrumator-canonic.php?litera=C#caterisire" class="btn btn-primary">Citește</a>
          </div>
@@ -152,7 +175,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
      </div>           
 
 
-    <div class="col">
+    <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100">
         <img src="http://localhost/canoane/imagini/excomunicarea.jpg" class="card-img-top" alt="...">
         <div class="card-body">
@@ -166,15 +189,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 </div>
  
-            
-            
-
-
-
-
-
-
-
     </div>
 
 </div>
+
+<?php include "footer.php"; ?>

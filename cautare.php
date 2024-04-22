@@ -39,7 +39,7 @@ include "titluri-pagini.php";
                     <?php include "menu-principal.php";?>
         </div>
 
-        <div class="col-lg-8 zona-principala">
+        <div class="col-lg-8 zona-principala p-5">
 
 
 <?php
@@ -91,7 +91,7 @@ $extra_linkuri = "";
 
                     echo '<tr class="clickable-row">';
                         echo '<td width="10%">' . $Nume . '</a></td>';
-                        echo '<td width="30%"><a href="https://localhost/canoane/unic.php/' . creare_url_din_titlu($Denumire) . '-' . $id . '">' . $Denumire . '</a></td>';
+                        echo '<td width="30%"><a href="http://localhost/canoane/unic.php/' . creare_url_din_titlu($Denumire) . '-' . $id . '">' . $Denumire . '</a></td>';
                         echo '<td width="60%">' . $Continut . '</td>';
                         // echo '<td>' . $Pedeapsa . '</td>';
                         // echo '<td>' . $Conexiuni . '</td>';
@@ -119,5 +119,11 @@ $(document).ready(function () {
 
 
 </script>
+
+</div>
+
+</div>
+</div>
+
 
 <?php include "footer.php";?>

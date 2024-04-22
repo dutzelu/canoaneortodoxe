@@ -42,7 +42,7 @@ $extra_linkuri = "";
                     <?php include "menu-principal.php";?>
         </div>
 
-        <div class="col-lg-8 zona-principala">
+        <div class="col-lg-8 zona-principala p-5">
 
 
 
@@ -163,9 +163,17 @@ $extra_linkuri = "";
         }    
         
         echo "</ul>";
-include "footer.php";
 
-?>
+        ?>
+        
+</div>
+
+</div>
+</div> 
+
+
+<?php include "footer.php"; ?>
+
 <script>
 $(document).ready(function() {
         $(".flip").click(function() {

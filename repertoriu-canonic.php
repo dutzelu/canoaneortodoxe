@@ -37,7 +37,7 @@
                     <?php include "menu-principal.php";?>
         </div>
 
-        <div class="col-lg-8 zona-principala">
+        <div class="col-lg-8 zona-principala p-5">
 
 
 <h2 class="titlu">REPERTORIU CANONIC GENERAL PE TEME, ANEXAT LA COLECŢIA OFICIALĂ DE CANOANE A BISERICII ORTODOXE</h2>
@@ -106,7 +106,11 @@
                     }
                     echo "</ul></div>";
                 }
-                
-include "footer.php";
-
 ?>
+
+</div>
+
+</div>
+</div>    
+
+<?php include "footer.php"; ?>
