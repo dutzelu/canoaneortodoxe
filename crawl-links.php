@@ -40,4 +40,4 @@ function crawl($url, $depth = 5) {
 }
 
 // Start crawling from the root URL of your website
-crawl('http://localhost/canoane/index.php');
+crawl('https://canoaneortodoxe.ro/index.php');

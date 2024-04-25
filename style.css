@@ -249,6 +249,23 @@ li a.active {color:#0d6efd!important;}
 }
 
 
+footer {
+  border-top: 2px dashed #CCC;
+  background: darkslategray;
+  margin-top: 30px;
+  color: #FFF;
+}
+
+footer a {
+  color:#ffecaa;
+  font-size:12px;
+}
+
+.logoFooter {width:110px;}
+.linkuriFooter {width:200px;}
+
+
+
 /* ---- Mobile ---- */ 
 
 @media only screen and (max-width:600px) {

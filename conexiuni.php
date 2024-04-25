@@ -29,38 +29,45 @@ include "titluri-pagini.php";
 
         <div class="col-lg-8 zona-principala p-5">
 
+        <h1 class="titlu">Canon principal + conexiuni </h1>
 <?php
 
-if (isset($_GET['id'])) {
-    $b = $_GET['id'];
-} else {$b="";}
+    $url =  "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $slug_canon = basename($url);
 
-?>
+    $sql_slug="SELECT * FROM canoane WHERE adresa_url=?";
+    $stmt = $conn->prepare($sql_slug);
+    $stmt->bind_param('s', $slug_canon);
+    $rezul = $stmt->execute();
+    $rezul = $stmt->get_result();
 
-<h1 class="titlu"> Canon principal + conexiuni </h1>
+    
+    while ($data = mysqli_fetch_assoc($rezul)){    
+        $id_canon = $data['id'];
+        $titlu = $data['DenumireExplicativa'];
+        $text = $data['Conexiuni'];
 
-<?php
+        include "conex-canoane.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $id_canon = $_POST['id_canon'];
-    $id_uri_canoane_conex = $_POST['id_uri_canoane_conex'];
 
-    afiseaza_canon ($id_canon);
+        afiseaza_canon ($id_canon);
 
-    $id_uri_canoane_conex = explode ("-",$id_uri_canoane_conex);
+        
+        $iduri_canoane = explode ("-",$id_uri_canoane_conex);
 
-    echo '<hr style="border:2px solid #000">
-        <div class="iduri_secundare">';
+        echo '<hr style="border:2px solid #000">
+            <div class="iduri_secundare">';
 
-    foreach ($id_uri_canoane_conex as $ids) {
-        afiseaza_canon ($ids);    
-        echo "<hr>";
+        foreach ($iduri_canoane as $ids) {
+            afiseaza_canon ($ids);    
+            echo "<hr>";
+        }
+
     }
 
     echo "</div>";
 
-}
 
 
 ?>

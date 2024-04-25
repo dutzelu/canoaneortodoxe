@@ -4,23 +4,16 @@
     include "functii.php";
     include "titluri-pagini.php"; 
 
-    if(isset($_GET['indice'])) {
-
-        $id_indice_canonic = (int)$_GET['indice'];
-
         // aflu alias pentru a-l compara cu cel din baza de date
 
         $url =  "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $regex_indice = '/canoane-(.*)\?indice=(\d+)/m';
         $slug_indice = basename($url);
-        preg_match_all($regex_indice, $slug_indice, $afla_id, PREG_SET_ORDER, 0);
-        $alias_indice = $afla_id[0][1];
 
         // extrag indicele canonic din db
 
-        $sql = "SELECT * FROM indice_canonic WHERE id= ?";
+        $sql = "SELECT * FROM indice_canonic WHERE adresa_url LIKE ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('i', $id_indice_canonic);
+        $stmt->bind_param('s', $slug_indice);
         $rez = $stmt->execute();
         $rez = $stmt->get_result();
     
@@ -29,15 +22,9 @@
              $titlu_pg = 'Canoane despre ' . $rezultat['cuvant_cheie'];
              $text="(" . $rezultat['conexiuni'] . ")";
              include "conex-canoane.php";
-             $url_indice = creare_url_din_titlu($rezultat['cuvant_cheie']);
             
         // opresc codul ca să afișez $title_pg
 
-
-        if (trim($url_indice) !== trim($alias_indice)) {
-            trigger_error("Error: URL inexistent", E_USER_ERROR);
-        }
-        
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +56,7 @@
     // Continui while loop-ul
 
          echo '<h1>Canoane despre <span class="cuvant-cheie-rosu">' . $rezultat['cuvant_cheie'] . '</span></h1>';
-         echo '<a href="http://localhost/canoane/indice-canonic.php?litera=A">←Indice canonic</a>';
+         echo '<a href="https://canoaneortodoxe.ro/indice-canonic.php?litera=A">←Indice canonic</a>';
      }
 
      $can = explode ("-",$id_uri_canoane_conex);
@@ -83,7 +70,6 @@
 
      echo "</div>";
  
- }
 
 
 ?>

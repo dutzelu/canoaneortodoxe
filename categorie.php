@@ -16,7 +16,7 @@ include "titluri-pagini.php";
     <title><?php echo $titlu_pg;?></title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="http://localhost/canoane/style.css">
+    <link rel="stylesheet" href="https://canoaneortodoxe.ro/style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -75,13 +75,14 @@ include "titluri-pagini.php";
                             $comentarii = $data["Comentarii"];
                             $talcuire = $data["Talcuire"];
                             $simfonie = $data["Simfonie"];
+                            $adresa_url = $data["adresa_url"];
 
                             echo 
                             '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span><span class="denumire">' 
-                            .'<a href="http://localhost/canoane/unic.php/'. $url_articol . '">' .$data['DenumireExplicativa'] .'</a></span>';
+                            .'<a href="https://canoaneortodoxe.ro/unic.php/'. $url_articol . '">' .$data['DenumireExplicativa'] .'</a></span>';
                             
                             if(isset($_SESSION['username'])){
-                                echo ' <a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>';
+                                echo ' <a style="color:red; text-align:right" href="https://canoaneortodoxe.ro/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>';
                             } else {echo '</p>';}
 
                             echo '<div class="continut">'.$data['Continut'].'</div>';
@@ -102,12 +103,7 @@ include "titluri-pagini.php";
                                 echo $links;
                                 // butonul Canon + conexiuni
 
-
-                                echo '<form action="conexiuni.php?'. $url_articol . '?id='. $id_canon . '" method="POST">';
-                                echo '<input type="hidden" name="id_canon" value="' . $id_canon . '">';
-                                echo '<input type="hidden" name="id_uri_canoane_conex" value="' . $id_uri_canoane_conex . '">';
-                                echo '<input style="margin-top:14px" class="btn btn-outline-primary btn-sm" type="submit" value="Canon + conexiuni">';
-                                echo '</form>';
+                                echo '<p class="mt-3"><a class="btn btn-outline-primary btn-sm" href="https://canoaneortodoxe.ro/conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
 
                             } 
 

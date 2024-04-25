@@ -3,34 +3,20 @@
 include 'db.php';
 include 'functii.php';
 
+$slug = 'prelungirea-afurisirii';
+
+$sql_slug="SELECT * FROM canoane WHERE adresa_url=?";
+$stmt = $conn->prepare($sql_slug);
+$stmt->bind_param('s', $slug);
+$rezul = $stmt->execute();
+$rezul = $stmt->get_result();
 
 
-$sql_ap="SELECT * FROM `canoane` ORDER BY ID";
-$stmt = $conn->prepare($sql_ap);
-$rezultate = $stmt->execute();
-$rezultate = $stmt->get_result();
-
-$i = 1;
-while ($data = mysqli_fetch_assoc($rezultate)){    
-
-  $id = $data['id'];
-  $slug = trim($data['adresa_url']);
-
-  // echo $id . ' ' . $slug . "<br>";
-  // $i++;
-
-
-  $sql_update = "
-    UPDATE canoane 
-    SET 
-      adresa_url = '$slug' 
-    WHERE id = '$id'
-    ";
-
-  $rez=mysqli_query($conn, $sql_update);
-
-  echo "<br>";
+while ($data = mysqli_fetch_assoc($rezul)){    
+    $id_canon = $data['id'];
+ echo   $conexiuni = $data['Conexiuni'];
 
 }
 
-?>
+
+ ?>

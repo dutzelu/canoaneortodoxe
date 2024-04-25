@@ -86,18 +86,19 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
                 $comentarii = $data["Comentarii"];
                 $talcuire = $data["Talcuire"];
                 $simfonie = $data["Simfonie"];
+                $adresa_url = $data["adresa_url"];
  
                 echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span> ';
                 
                 if(isset($_SESSION['username'])){
-                    echo '<a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
+                    echo '<a style="color:red; text-align:right" href="https://canoaneortodoxe.ro/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
                 } else {echo "</p>";}
 
                 echo '<h1 class="titlu_canon">' . $data['DenumireExplicativa'] .'</h1>';
        
                 if ( $id_titlu_capitol !== 0) {
 
-                    echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
+                    echo '<span class="bold">Categorie: </span><a href="https://canoaneortodoxe.ro/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
                     
                      // afisez toate numerele de canoane cu url din categoria respectivă
                     $url_baza="unic.php";
@@ -131,11 +132,7 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
 
                      // butonul Canon + conexiuni
 
-                     echo '<form action="http://localhost/canoane/conexiuni.php?' . $url_articol . '-' . $id_canon . '" method="POST">';
-                     echo '<input type="hidden" name="id_canon" value="' . $id_canon . '">';
-                     echo '<input type="hidden" name="id_uri_canoane_conex" value="' . $id_uri_canoane_conex . '">';
-                     echo '<input style="margin-top:14px" class="btn btn-outline-primary btn-sm" type="submit" value="Canon + conexiuni">';
-                     echo '</form>';
+                     echo '<p class="mt-3"><a class="btn btn-outline-primary btn-sm" href="https://canoaneortodoxe.ro/conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
                 
                 } 
 

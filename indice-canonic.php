@@ -38,7 +38,7 @@ $extra_linkuri = "";
 
 <h2 class="titlu">INDICE CANONIC</h2>
 
-<p>Pentru rezultate complete în cercetarea canoanelor vă recomandăm să folosiți acest indice canonic împreună cu funcția de <a href="http://localhost/canoane/cautare.php">căutare</a> și cu <a href="http://localhost/canoane/repertoriu-canonic.php">repertoriul canonic</a>.</p>
+<p>Pentru rezultate complete în cercetarea canoanelor vă recomandăm să folosiți acest indice canonic împreună cu funcția de <a href="https://canoaneortodoxe.ro/cautare.php">căutare</a> și cu <a href="https://canoaneortodoxe.ro/repertoriu-canonic.php">repertoriul canonic</a>.</p>
             
         <?php
 
@@ -83,7 +83,7 @@ $extra_linkuri = "";
             $cuvant_cheie = $data2['cuvant_cheie'];
             $conexiuni = $data2['conexiuni'];
             $extra = $data2['extra'];
-            
+            $adresa_url = $data2['adresa_url'];
             $text="(" . $data2['conexiuni'] . ")";
             $id_indice = explode (' ', replaceSpecialChars($cuvant_cheie) );
             
@@ -101,7 +101,7 @@ $extra_linkuri = "";
                 $c = ltrim ($c);              
                 $prima_litera = ucfirst(substr(replaceSpecialChars($c),0,1));
                 $primul_cuvant_c = explode (' ', trim($c));     
-                $extra_cu_link = '<a href="http://localhost/canoane/indice-canonic.php?litera=' . $prima_litera . '#' . 
+                $extra_cu_link = '<a href="https://canoaneortodoxe.ro/indice-canonic.php?litera=' . $prima_litera . '#' . 
                 replaceSpecialChars ($primul_cuvant_c[0]) . ' ' . '">' . $c . "</a>, ";
 
                 $extra_linkuri .= $extra_cu_link;
@@ -120,7 +120,7 @@ $extra_linkuri = "";
 
             if (!empty($conexiuni)) { 
                 
-                echo '<p><a class="btn btn-outline-primary btn-sm mt-2" href="indice-canonic-conexiuni.php/canoane-' . creare_url_din_titlu(strtolower($cuvant_cheie)) . '?indice=' . $id_indice_canonic . '" role="button">Vezi canoanele</a></p>';
+                echo '<p><a class="btn btn-outline-primary btn-sm mt-2" href="indice-canonic-conexiuni.php/' . $adresa_url . '" role="button">Vezi canoanele</a></p>';
 
             } 
 

@@ -19,7 +19,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     <title>Căutare în canoane</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="http://localhost/canoane/style.css">
+    <link rel="stylesheet" href="https://canoaneortodoxe.ro/style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -53,8 +53,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 <?php if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
-
-        
 
             // Căutare în Canoane (Denumirea Explicativa + Conținut)
 
@@ -91,7 +89,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 echo '<li class="titlu_cautari">
                 
                 <span class="badge bg-danger">' . $nume . '</span>
-                <a href="http://localhost/canoane/unic.php/'. $url_articol . '?cautare='. $cautare . '">' .$row['DenumireExplicativa'] . ' »</a></li>';
+                <a href="https://canoaneortodoxe.ro/unic.php/'. $url_articol . '?cautare='. $cautare . '">' .$row['DenumireExplicativa'] . ' »</a></li>';
             
                 // afisarea paragraf care cuprinde cuvantul cautat
 
@@ -132,7 +130,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 $url_articol = creare_url_din_titlu ($cuvant_cheie);
                 $continut_indrum = $row['continut'];
     
-                echo '<li class="titlu_cautari"><a href="http://localhost/canoane/indrumator-canonic.php?litera=' . $prima_litera . '#'. strtolower($id_indice[0]) . '">' .$cuvant_cheie .'</a></li>';
+                echo '<li class="titlu_cautari"><a href="https://canoaneortodoxe.ro/indrumator-canonic.php?litera=' . $prima_litera . '#'. strtolower($id_indice[0]) . '">' .$cuvant_cheie .'</a></li>';
 
 
                 // // afisarea paragraf care cuprinde cuvantul cautat
@@ -172,7 +170,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 $prima_litera = ucfirst(substr(replaceSpecialChars($cuvant_cheie),0,1));
                 $url_articol = creare_url_din_titlu ($cuvant_cheie);
 
-                echo '<li class="titlu_cautari"><a href="http://localhost/canoane/indice-canonic-conexiuni.php/canoane-' . strtolower($id_indice[0]) . '?indice=' . $id_indcan.'">' .$cuvant_cheie .'</a></li>';
+                echo '<li class="titlu_cautari"><a href="https://canoaneortodoxe.ro/indice-canonic-conexiuni.php/' . strtolower($id_indice[0]) . '">' .$cuvant_cheie .'</a></li>';
             }
             echo "</ul>";
         }
@@ -196,9 +194,9 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 $continut = $row['continut'];
                 $id_indice = explode (' ', replaceSpecialChars($continut) );
                 $prima_litera = ucfirst(substr(replaceSpecialChars($continut),0,1));
-                $url_cap = creare_url_din_titlu ($continut);
+                $url_cap = $row['adresa_url'];
 
-                echo '<li class="titlu_cautari"><a href="http://localhost/canoane/repertoriu.php/' . $url_cap . '-' . $id_cap . '">' .$continut .'</a></li>';
+                echo '<li class="titlu_cautari"><a href="https://canoaneortodoxe.ro/repertoriu.php/' . $url_cap . '">' .$continut .'</a></li>';
             }
             echo "</ul>";
         }
