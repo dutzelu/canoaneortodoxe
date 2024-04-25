@@ -35,9 +35,9 @@ if (isset($_GET['id'])) {
                 $prescurtare = $data2['prescurtare'];
                 
  
-                echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:"right"  href="http://localhost/canoane/unic.php/' . $url . '">[View] </a></p>' ; 
+                echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span>' . ' <a style="color:red; text-align:"right"  href="https://canoaneortodoxe.ro/unic.php/' . $url . '">[View] </a></p>' ; 
 
-                echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a><br>';
+                echo '<span class="bold">Categorie: </span><a href="https://canoaneortodoxe.ro/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a><br>';
 
                 if ($nr_canoane>1) {
                     echo '<p><span class="bold">Navighează: </span>';
@@ -52,7 +52,7 @@ if (isset($_GET['id'])) {
 
                 <!-- formular de editare a canonului -->
 
-                <form action="http://localhost/canoane/admin/update.php?id=<?php echo $b;?>" method="POST">
+                <form action="https://canoaneortodoxe.ro/admin/update.php?id=<?php echo $b;?>" method="POST">
 
                     <p><span class="input-group-text">Titlu:</span>
                     <input class="form-control" type="text" name="denumire" style="width:100%;" value="<?php  echo $data['DenumireExplicativa'];?>"></p>    

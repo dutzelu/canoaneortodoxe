@@ -4,7 +4,7 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  header("location: http://localhost/canoane/index.php");
+  header("location: https://canoaneortodoxe.ro/index.php");
   exit;
 }
  
@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: http://localhost/canoane/index.php");
+                            header("location: https://canoaneortodoxe.ro/index.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -102,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 form-wrapper auth login">
                 
-                <p><a href="http://localhost/canoane/"><img src="http://localhost/canoane/imagini/logo-canoane-ortodoxe.png" class="logo" width="250"/></a></p>
+                <p><a href="https://canoaneortodoxe.ro/"><img src="https://canoaneortodoxe.ro/imagini/logo-canoane-ortodoxe.png" class="logo" width="250"/></a></p>
 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">

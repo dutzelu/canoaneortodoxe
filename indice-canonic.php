@@ -99,7 +99,7 @@ $extra_linkuri = "";
                 $c = ltrim ($c);              
                 $prima_litera = ucfirst(substr(replaceSpecialChars($c),0,1));
                 $primul_cuvant_c = explode (' ', trim($c));     
-                $extra_cu_link = '<a href="http://localhost/canoane/indice-canonic.php?litera=' . $prima_litera . '#' . 
+                $extra_cu_link = '<a href="https://canoaneortodoxe.ro/indice-canonic.php?litera=' . $prima_litera . '#' . 
                 replaceSpecialChars ($primul_cuvant_c[0]) . ' ' . '">' . $c . "</a>, ";
 
                 $extra_linkuri .= $extra_cu_link;

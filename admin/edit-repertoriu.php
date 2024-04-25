@@ -21,7 +21,7 @@ $id = $_GET['id'];
     <title><?php echo $titlu_pg;?></title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="http://localhost/canoane/style.css">
+    <link rel="stylesheet" href="https://canoaneortodoxe.ro/style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -67,7 +67,7 @@ $id = $_GET['id'];
                         <h1 class="titlu">Titlu nr. <?php  echo  $nr_titlu;?> </h1>
                             <!-- formular de editare a canonului -->
 
-                            <form action="http://localhost/canoane/admin/update-repertoriu.php?id=<?php echo $id;?>" method="POST">
+                            <form action="https://canoaneortodoxe.ro/admin/update-repertoriu.php?id=<?php echo $id;?>" method="POST">
                                 
                                 
                                 <p><span>Cap. <?php  echo  $nr_cap;?>:</span></p>    

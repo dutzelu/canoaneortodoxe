@@ -41,17 +41,6 @@ while ($data = mysqli_fetch_assoc($rezultate2)){
     }  
 
     
-    // echo "<br>";
-    // echo "id_inceput = " . $id_inceput;
-    // echo "<br>";
-    // echo "id_canon_back = " . $id_canon_back;
-    // echo "<br>";
-    // echo "id_canon = " . $id_canon;
-    // echo "<br>";
-    // echo "id_canon_next = " . $id_canon_next;
-    // echo "<br>";
-    // echo "id_sfarsit = " . $id_sfarsit;
-
     // aflu adresa_url canon_next
 
     $sql_canon_next="SELECT * FROM canoane Where canoane.id = ?;";

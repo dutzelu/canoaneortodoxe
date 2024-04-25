@@ -2,7 +2,7 @@ body {font-size:17px;line-height:20px;}
 
 a {text-decoration: none;}
 a.aici {color:#0d6efd;}
-.creat {margin-top:30px; padding-top:10px; font-size:12px; text-align:center;}
+.creat {margin-top:0px; padding-top:10px; font-size:12px; text-align:center;}
 
 #wrapper {width:1200px;margin:0 auto;}
 .numar_canon {font-weight:bold;}
@@ -25,6 +25,8 @@ a.aici {color:#0d6efd;}
   margin: 5px 0 20px 0;
   font-size: 18px;
   line-height: 22px;
+  font-size: 1.2em;
+  line-height: 1.2em;
 }
 .iduri_secundare {background:#e7e7e7; padding:20px;}
 .iduri_secundare .titlu_canon {font-size:18px;}
@@ -68,6 +70,8 @@ p.alfabet a {
   border: 1px solid #CCC;
   margin: 3px;
   background: aliceblue;
+  border-radius: 2px;
+
 }
 
 .table > thead:nth-child(1) > tr:nth-child(1) {
@@ -99,7 +103,7 @@ p.alfabet a {
 .lista-meniu {margin-left:30px;}
 
 .navigheaza {
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   line-height: 22px;
 }
 .continut-secundar, .navigheaza {font-size:15px;}
@@ -107,10 +111,10 @@ p.alfabet a {
 
 .btn_indrumator {
   border: 1px solid #007bff;
-  padding: 0px 7px;
+  padding: 1px 7px;
   color: #007bff;
   border-radius: 2px;
-  font-size: 14px;
+  font-size: 15px;
   line-height:20px;
   display: inline-block;
 }
@@ -119,6 +123,15 @@ p.alfabet a {
   background:#007bff;
   color:#FFF;
 }
+
+.cauta input {
+  margin-left:40px;
+  min-width:200px;
+}
+
+.input-group-append {
+  margin-left: 13px!important;
+  }
 
 .cautare_subliniata {background: khaki;}
 
@@ -153,7 +166,7 @@ p.alfabet a {
 }
 
 /*the container must be positioned relative:*/
-.autocomplete {
+.completeaza {
   position: relative;
   display: inline-block;
   margin-left: -20px;
@@ -183,10 +196,10 @@ input[type=submit] {
   border-bottom: none;
   border-top: none;
   z-index: 99;
-  top: 60%;
-  left: 0px;
+  top: 65%;
+  left: 40px;
   right: 0;
-  width: 206px;
+  width: 106%;
 }
 
 .autocomplete-items div {
@@ -246,7 +259,7 @@ input[type=submit] {
 }
 
 .navbar-nav {
-  margin: 0 10%;
+  margin: 0 7.3% 0 40px;
 }
 
  
@@ -273,7 +286,45 @@ footer {
 .logoFooter {width:110px;}
 .linkuriFooter {width:240px;}
 
+/* Buton sus */
 
+#sus {
+  display: inline-block;
+  background-color: #3765c3;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#sus::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#sus:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#sus:active {
+  background-color: #555;
+}
+#sus.show {
+  opacity: 1;
+  visibility: visible;
+}
+ 
 
 /* ---- Mobile ---- */ 
 

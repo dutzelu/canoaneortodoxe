@@ -9,6 +9,6 @@ $_SESSION = array();
 session_destroy();
  
 // Redirect to login page
-header("location: http://localhost/canoane/index.php");
+header("location: https://canoaneortodoxe.ro/index.php");
 exit;
 ?>
