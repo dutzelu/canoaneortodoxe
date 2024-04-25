@@ -27,9 +27,6 @@ function transformers ($conexiune_simpla) {
       // identific (împart) fiecare set de canoane pe capitole
       $canoane_sinod = explode(';',$conexiune_simpla); 
 
-      // echo "<pre>";
-      // var_dump ($canoane_sinod);
-      // echo "</pre>";
 
       $id_capitol="";
       $id_canon_conex="";
@@ -98,11 +95,9 @@ function transformers ($conexiune_simpla) {
                   while ($data2 = mysqli_fetch_assoc($rezultate2)){    
                     $url_canon = $data2['adresa_url'];
                   }  
-
                   // pun linkul la canon
 
-                  $canon_cu_link = '<a href="'. $url_canon .'">' . $nr_canon . ' ' .$capitol . "</a>" . " | " ;
-
+                  $canon_cu_link = '<a href="http://localhost/canoane/unic.php/'. $url_canon .'">' . $nr_canon . ' ' .$capitol . "</a>" . " | " ;
                   // concatenez toate linkurile într-un string
                   $canoane_cu_link .= $canon_cu_link ; 
 
@@ -185,7 +180,7 @@ function lista_numere_url ($x, $y, $z) {
 
         
         if ($id_canon!=$y){
-          $nav ='<a href="https://canoaneortodoxe.ro/' . $z . "/" . $url_articol . '">'.$nr_can.'</a>'.', ';
+          $nav ='<a href="http://localhost/canoane/' . $z . "/" . $url_articol . '">'.$nr_can.'</a>'.', ';
         } else {$nav =$nr_can . ', ';}
 
         $nav_all.=$nav; 
@@ -228,7 +223,7 @@ function numere_url_din_categ ($slug) {
         $id_canon = $data['id_canon'];
         $nr_canoane = $data['id_sfarsit'] - $data['id_inceput'];
         
-        $nav ='<a href="https://canoaneortodoxe.ro/unic.php/' . $url_articol . '">'.$nr_can.'</a>'.', ';
+        $nav ='<a href="http://localhost/canoane/unic.php/' . $url_articol . '">'.$nr_can.'</a>'.', ';
         
         $nav_all.=$nav; 
         
@@ -294,15 +289,15 @@ function afiseaza_canon ($id_canon) {
             echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span> ';
 
             if(isset($_SESSION['username'])){
-              echo '<a style="color:red; text-align:right" href="https://canoaneortodoxe.ro/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
+              echo '<a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
             } else {
               echo "</p>";
             }
             
-            echo '<h2 class="titlu_canon"><a href="https://canoaneortodoxe.ro/unic.php/'. $url_articol . '">' .$data['DenumireExplicativa'] .' »</a>
+            echo '<h2 class="titlu_canon"><a href="http://localhost/canoane/unic.php/'. $url_articol . '">' .$data['DenumireExplicativa'] .' »</a>
             </h2>';
 
-            echo '<span class="bold">Categorie: </span><a href="https://canoaneortodoxe.ro/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
+            echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
 
             // afisez continutul canonului, pedeapsa, conexiuni, comentarii si simfonie
         
@@ -348,7 +343,6 @@ function id_uri_canoane_din_conexiuni ($conexiuni) {
 
           while ($data3 = mysqli_fetch_assoc($rez_capitol)){   
             $id_capitol = $data3['id'];
-            var_dump($id_capitol);
           }
 
     // iau id-ul capitolului și aflu id_început

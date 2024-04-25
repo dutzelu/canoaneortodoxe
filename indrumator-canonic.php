@@ -37,8 +37,6 @@ $extra_linkuri = "";
 
 <h2 class="titlu">ÎNDRUMĂTOR CANONIC</h2>
 
-<p>Pentru rezultate complete în cercetarea canoanelor vă recomandăm să folosiți acest indice canonic împreună cu funcția de <a href="https://canoaneortodoxe.ro/cautare.php">căutare</a> și cu <a href="https://canoaneortodoxe.ro/repertoriu-canonic.php">repertoriul canonic</a>.</p>
-            
         <?php
 
         $sql_indici= "SELECT DISTINCT `litera` FROM `indrumator_canonic` ORDER BY `litera` ASC";
@@ -88,11 +86,6 @@ $extra_linkuri = "";
             
             preg_match_all($re, $continut, $matches, PREG_SET_ORDER, 0);
 
-            // Print the entire match result
-            // echo "<pre>";
-            // var_dump($matches);
-            // echo "</pre>";
-
 
             // iau conexiunile simple din array-ul dat de regex
 
@@ -106,7 +99,7 @@ $extra_linkuri = "";
                 
                 array_push ($adunare_conex_fara_link, $y['0']);
 
-                $conexiuni_cu_link .= '<a class="btn_indrumator" href="https://canoaneortodoxe.ro/indrumator-canonic-conexiuni.php?tema=' .  creare_url_din_titlu(strtolower($cuvant_cheie)) . '&conex=' . $id_uri_canoane_conex . '"role="button">detalii</a>';
+                $conexiuni_cu_link .= '<a class="btn_indrumator" href="http://localhost/canoane/indrumator-canonic-conexiuni.php?tema=' .  creare_url_din_titlu(strtolower($cuvant_cheie)) . '&conex=' . $id_uri_canoane_conex . '"role="button">detalii</a>';
 
                 // afișez continutul tabului
                 
@@ -127,7 +120,7 @@ $extra_linkuri = "";
             echo '<li id="' . strtolower($id_indice[0]) . '" class="list-group-item"><strong>' . $cuvant_cheie . '</strong> ';
 
             if(isset($_SESSION['username'])){
-               echo ' <a href="https://canoaneortodoxe.ro/admin/edit-indrumator.php/?id=' . $id_cuvant . '" style="color:red;">[edit]</a>' . "<br>";
+               echo ' <a href="http://localhost/canoane/admin/edit-indrumator.php/?id=' . $id_cuvant . '" style="color:red;">[edit]</a>' . "<br>";
             } 
  
             echo '<div class="indrumator">' . $continut . '</div>';
@@ -156,11 +149,3 @@ $extra_linkuri = "";
 
 <?php include "footer.php"; ?>
 
-<script>
-$(document).ready(function() {
-        $(".flip").click(function() {
-            $(".panel").slideToggle("slow");
-        });
-    });
-
-</script>

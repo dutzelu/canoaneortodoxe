@@ -56,7 +56,7 @@
     // Continui while loop-ul
 
          echo '<h1>Canoane despre <span class="cuvant-cheie-rosu">' . $rezultat['cuvant_cheie'] . '</span></h1>';
-         echo '<a href="https://canoaneortodoxe.ro/indice-canonic.php?litera=A">←Indice canonic</a>';
+         echo '<a href="http://localhost/canoane/indice-canonic.php?litera=A">←Indice canonic</a>';
      }
 
      $can = explode ("-",$id_uri_canoane_conex);
@@ -69,7 +69,9 @@
      }
 
      echo "</div>";
+     echo "</div>";
  
 
-
+     include "footer.php"; 
 ?>
+

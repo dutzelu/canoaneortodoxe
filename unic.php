@@ -15,7 +15,7 @@ $slug_canon = end($slug_canon);
 $cautare = isset( $_GET['cautare']) ? $_GET['cautare'] : NULL;
 $cuvant_cautat_html = '<b>' . $cautare . '</b>';
 
-        // querry după id pentru canon în baza de date 
+        // querry după adresa_url pentru canon în baza de date 
    
 
         $sql_slug="SELECT * FROM canoane WHERE adresa_url=?";
@@ -30,7 +30,7 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
         while ($data = mysqli_fetch_assoc($rezultate2)){    
      
             $titlu_pg = $data['Nume'] . " | " .$data['DenumireExplicativa'];
-            $url_articol = creare_url_din_titlu ($data['DenumireExplicativa']);
+            $url_articol = $data['adresa_url'];
             $id_titlu_capitol = (int)$data['id_titlu_capitol'];
             $id_canon = $data['id'];
         
@@ -91,14 +91,14 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
                 echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span> ';
                 
                 if(isset($_SESSION['username'])){
-                    echo '<a style="color:red; text-align:right" href="https://canoaneortodoxe.ro/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
+                    echo '<a style="color:red; text-align:right" href="http://localhost/canoane/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
                 } else {echo "</p>";}
 
                 echo '<h1 class="titlu_canon">' . $data['DenumireExplicativa'] .'</h1>';
        
                 if ( $id_titlu_capitol !== 0) {
 
-                    echo '<span class="bold">Categorie: </span><a href="https://canoaneortodoxe.ro/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
+                    echo '<span class="bold">Categorie: </span><a href="http://localhost/canoane/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
                     
                      // afisez toate numerele de canoane cu url din categoria respectivă
                     $url_baza="unic.php";
@@ -132,7 +132,7 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
 
                      // butonul Canon + conexiuni
 
-                     echo '<p class="mt-3"><a class="btn btn-outline-primary btn-sm" href="https://canoaneortodoxe.ro/conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
+                     echo '<p class="mt-3"><a class="btn btn-outline-primary btn-sm" href="http://localhost/canoane/conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
                 
                 } 
 
@@ -152,4 +152,27 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
             echo '</div>';
 
         }
+        
+        include "nav-canon.php";
+
+        ?>
+
+        <div class="navigareCanoane">
+   
+            
+            <?php 
+            
+            if (!$stop_start) {
+                echo '<a href="http://localhost/canoane/unic.php/' . $adresa_url_back . '" class="btn btn-outline-danger btn-sm">< Anterior </a> ';
+            }
+            
+            if (!$stop_final) {
+                echo '<a href="http://localhost/canoane/unic.php/' . $adresa_url_next . '" class="btn btn-outline-danger btn-sm"> Urmator ></a>';
+            }
+            ?>
+
+    </div>
+    </div>
+
+    <?php include "footer.php"; ?>
 

@@ -67,7 +67,8 @@ include "titluri-pagini.php";
     }
 
     echo "</div>";
+    echo "</div>";
 
 
-
+    include "footer.php";
 ?>

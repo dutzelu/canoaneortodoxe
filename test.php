@@ -3,20 +3,39 @@
 include 'db.php';
 include 'functii.php';
 
-$slug = 'prelungirea-afurisirii';
+$url =  "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$slug_canon = parse_url($url, PHP_URL_PATH);
+$slug_canon = explode('/', parse_url($slug_canon, PHP_URL_PATH));
+$slug_canon = end($slug_canon);
+
 
 $sql_slug="SELECT * FROM canoane WHERE adresa_url=?";
 $stmt = $conn->prepare($sql_slug);
-$stmt->bind_param('s', $slug);
-$rezul = $stmt->execute();
-$rezul = $stmt->get_result();
+$stmt->bind_param('s', $slug_canon);
+$rezultate2 = $stmt->execute();
+$rezultate2 = $stmt->get_result();
 
 
-while ($data = mysqli_fetch_assoc($rezul)){    
-    $id_canon = $data['id'];
- echo   $conexiuni = $data['Conexiuni'];
+// interogarea 1 pentru canon
 
+while ($data = mysqli_fetch_assoc($rezultate2)){    
+  echo $id_canon = $data['id'];
+  $id_canon_inainte = $id_canon+1;
+  $id_canon_inapoi = $id_canon+1;
 }
 
+$sql_canon_inainte="SELECT * FROM canoane WHERE id=?";
+$stmt = $conn->prepare($sql_canon_inainte);
+$stmt->bind_param('s', $id_canon_inainte);
+$rez = $stmt->execute();
+$rez = $stmt->get_result();
 
- ?>
+
+
+
+
+
+
+
+?>
+

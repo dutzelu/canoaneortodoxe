@@ -47,7 +47,7 @@ if ( isset($_GET['tema']) ) {
     // Continui while loop-ul
 
          echo '<h1>Temă: <span class="cuvant-cheie-rosu">' . $cuvant_cheie . '</span></h1>';
-         echo '<a href="https://canoaneortodoxe.ro/indrumator-canonic.php?litera=A">←Îndrumător canonic</a>';
+         echo '<a href="http://localhost/canoane/indrumator-canonic.php?litera=A">←Îndrumător canonic</a>';
      
 
     
@@ -62,8 +62,9 @@ if ( isset($_GET['tema']) ) {
      }
 
      echo "</div>";
+     echo "</div>";
  
  
-
+     include "footer.php";
 
 ?>

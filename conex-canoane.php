@@ -98,7 +98,7 @@ preg_match_all($regex, $text, $rezultate_conexiuni, PREG_SET_ORDER, 0);
 
                   // pun linkul la canon
 
-                  $canon_cu_link = '<a href="https://canoaneortodoxe.ro/unic.php/'. $url_canon .'">' . $nr_canon . ' ' .$capitol . "</a>" . " | " ;
+                  $canon_cu_link = '<a href="http://localhost/canoane/unic.php/'. $url_canon .'">' . $nr_canon . ' ' .$capitol . "</a>" . " | " ;
 
                   // concatenez toate linkurile într-un string
                   $canoane_cu_link .= $canon_cu_link ; 

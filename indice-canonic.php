@@ -38,8 +38,6 @@ $extra_linkuri = "";
 
 <h2 class="titlu">INDICE CANONIC</h2>
 
-<p>Pentru rezultate complete în cercetarea canoanelor vă recomandăm să folosiți acest indice canonic împreună cu funcția de <a href="https://canoaneortodoxe.ro/cautare.php">căutare</a> și cu <a href="https://canoaneortodoxe.ro/repertoriu-canonic.php">repertoriul canonic</a>.</p>
-            
         <?php
 
         $sql_indici= "SELECT DISTINCT `litera` FROM `indice_canonic` ORDER BY `litera` ASC";
@@ -101,7 +99,7 @@ $extra_linkuri = "";
                 $c = ltrim ($c);              
                 $prima_litera = ucfirst(substr(replaceSpecialChars($c),0,1));
                 $primul_cuvant_c = explode (' ', trim($c));     
-                $extra_cu_link = '<a href="https://canoaneortodoxe.ro/indice-canonic.php?litera=' . $prima_litera . '#' . 
+                $extra_cu_link = '<a href="http://localhost/canoane/indice-canonic.php?litera=' . $prima_litera . '#' . 
                 replaceSpecialChars ($primul_cuvant_c[0]) . ' ' . '">' . $c . "</a>, ";
 
                 $extra_linkuri .= $extra_cu_link;

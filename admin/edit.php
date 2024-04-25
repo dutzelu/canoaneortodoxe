@@ -17,7 +17,7 @@ if(isset($_SESSION['username'])){
     <title><?php echo $titlu_pg;?></title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://canoaneortodoxe.ro/style.css">
+    <link rel="stylesheet" href="http://localhost/canoane/style.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/ywpqronwp4p5zyx3ymuriis579s5rjamd0k04eqknrk9pd4c/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -68,7 +68,7 @@ if(isset($_SESSION['username'])){
 
                             echo 
                             '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span><span class="denumire">' 
-                            .'<a href="https://canoaneortodoxe.ro/admin/edit.php/'. $url_articol . '?id=' . $id_canon . '">' .$data['DenumireExplicativa'] .'</a></span> </p>'
+                            .'<a href="http://localhost/canoane/admin/edit.php/'. $url_articol . '?id=' . $id_canon . '">' .$data['DenumireExplicativa'] .'</a></span> </p>'
                             
                             .'<p style="continut">'.$data['Continut'].'</p>';
 
