@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
 
     <meta property="og:image" content="<?php echo BASE_URL;?>imagini/logo-canoane-ortodoxe.png" />
+    <meta property="og:locale" content="ro_RO" />
+    <meta property="og:site_name" content="Canoane Ortodoxe" />
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/ywpqronwp4p5zyx3ymuriis579s5rjamd0k04eqknrk9pd4c/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
