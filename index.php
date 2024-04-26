@@ -67,6 +67,19 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
     <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100">
+        <img src="<?php echo BASE_URL;?>imagini/preot-preoteasa.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Divorțul preoților și diaconilor</h5>
+            <p class="card-text">Despărţirea canonică a clerului, pentru adulterul soţiei. Divorţul canonic al clerului.</p>
+            <a href="<?php echo BASE_URL;?>indice-canonic-conexiuni.php/divortul-clericilor" class="btn btn-primary">Citește</a>
+        </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card h-100">
         <img src="<?php echo BASE_URL;?>imagini/intreita-afundare.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Întreita afundare</h5>
@@ -78,11 +91,33 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
      <div class="col-12 col-sm-6 col-md-4">
          <div class="card h-100">
+         <img src="<?php echo BASE_URL;?>imagini/casatoria-2.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+             <h5 class="card-title">Căsătoria a 2-a</h5>
+             <p class="card-text">Canonul a oprit cu desăvârşire de la slujire pe cei ce s-au căsătorit de două ori. </p>
+             <a href="<?php echo BASE_URL;?>indice-canonic-conexiuni.php/casatoria-a-doua" class="btn btn-primary">Citește</a>
+         </div>
+         </div>
+     </div>           
+
+     <div class="col-12 col-sm-6 col-md-4">
+         <div class="card h-100">
+         <img src="<?php echo BASE_URL;?>imagini/casatoria-3.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+             <h5 class="card-title">Căsătoria a 3-a</h5>
+             <p class="card-text">Şi pe una ca aceasta o numesc nu nuntă, ci poligamie, ba mai curând desfrânare, ce se pedepseşte.</p>
+             <a href="<?php echo BASE_URL;?>indice-canonic-conexiuni.php/casatoria-a-treia" class="btn btn-primary">Citește</a>
+         </div>
+         </div>
+     </div>           
+
+     <div class="col-12 col-sm-6 col-md-4">
+         <div class="card h-100">
          <img src="<?php echo BASE_URL;?>imagini/impartasire.jpg" class="card-img-top" alt="...">
          <div class="card-body">
-             <h5 class="card-title">Cum stăm la împărtășire</h5>
+             <h5 class="card-title">Canoane despre Sfânta Împărtășanie</h5>
              <p class="card-text">Când ne împărtășim ar trebui să ținem mâinile în formă de cruce pe piept</p>
-             <a href="<?php echo BASE_URL;?>unic.php/randuiala-pentru-primirea-cuminecaturii" class="btn btn-primary">Citește</a>
+             <a href="<?php echo BASE_URL;?>indice-canonic-conexiuni.php/cuminecatura" class="btn btn-primary">Citește</a>
          </div>
          </div>
      </div>           
@@ -94,6 +129,17 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             <h5 class="card-title">Când să îngenunchem?</h5>
             <p class="card-text">În zi de duminică nu ar trebuie să îngenunchem în biserică</p>
             <a href="<?php echo BASE_URL;?>unic.php/randuiala-ingenuncherii-in-biserica" class="btn btn-primary">Citește</a>
+        </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card h-100">
+        <img src="<?php echo BASE_URL;?>imagini/desfranare.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Despre desfrânarea clericilor.</h5>
+            <p class="card-text">Dacă împotriva unui credincios se face vreo învinuire de desfrânare sau de adulter sau de o altă oarecare faptă oprită şi s-ar dovedi, acela să nu se înainteze în cler </p>
+            <a href="<?php echo BASE_URL;?>indice-canonic-conexiuni.php/desfranare" class="btn btn-primary">Citește</a>
         </div>
         </div>
     </div>
@@ -162,6 +208,28 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             <p class="card-text">Afurisirea sau excomunicarea este excluderea credinciosului din comunitatea Bisericii, când se face vinovat de pacate contra credinței sau a moralei </p>
             <a href="<?php echo BASE_URL;?>indrumator-canonic.php?litera=A#afurisire" class="btn btn-primary">Afurisire</a>
             <a href="<?php echo BASE_URL;?>indrumator-canonic.php?litera=E#excomunicare" class="btn btn-warning">Excomunicare</a>
+        </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card h-100">
+        <img src="<?php echo BASE_URL;?>imagini/bani.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Iubirea de arginți și simonia</h5>
+            <p class="card-text">„Argintul sau aurul sau haina nimănui nu am poftit; toate vi le-am arătat vouă, căci astfel ostenindu-vă se cade să veniţi în ajutorul celor necredin­cioşi, socotind voi că este mai fericit a da decât a lua” </p>
+            <a href="<?php echo BASE_URL;?>indice-canonic-conexiuni.php/bani" class="btn btn-primary">Citește</a>
+        </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card h-100">
+        <img src="<?php echo BASE_URL;?>imagini/pornografie.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Canoane despre malahie</h5>
+            <p class="card-text">Cel ce a făcut malahie 40 de zile se pedepseşte, cu mâncare uscată hrănindu-se în fiecare zi şi făcând 100 de metanii. </p>
+            <a href="<?php echo BASE_URL;?>indice-canonic-conexiuni.php/malahie-masturbare" class="btn btn-primary">Citește</a>
         </div>
         </div>
     </div>
