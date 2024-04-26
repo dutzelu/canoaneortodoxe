@@ -14,6 +14,9 @@ if (!$conn) {
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $conn->set_charset("utf8");
 
+define( "BASE_URL", "http://localhost/canoane/");
+define("ROOT_PATH", $_SERVER["DOCUMENT_ROOT"] . "/canoane");
+
 
 // Start the session
 session_start();

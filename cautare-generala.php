@@ -76,7 +76,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 echo '<li class="titlu_cautari">
                 
                 <span class="badge bg-danger">' . $nume . '</span>
-                <a href="https://canoaneortodoxe.ro/unic.php/'. $url_articol . '?cautare='. $cautare . '">' .$row['DenumireExplicativa'] . ' »</a></li>';
+                <a href="' .  BASE_URL . 'unic.php/'. $url_articol . '?cautare='. $cautare . '">' .$row['DenumireExplicativa'] . ' »</a></li>';
             
                 // afisarea paragraf care cuprinde cuvantul cautat
 
@@ -117,7 +117,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 $url_articol = creare_url_din_titlu ($cuvant_cheie);
                 $continut_indrum = $row['continut'];
     
-                echo '<li class="titlu_cautari"><a href="https://canoaneortodoxe.ro/indrumator-canonic.php?litera=' . $prima_litera . '#'. strtolower($id_indice[0]) . '">' .$cuvant_cheie .'</a></li>';
+                echo '<li class="titlu_cautari"><a href="' .  BASE_URL . 'indrumator-canonic.php?litera=' . $prima_litera . '#'. strtolower($id_indice[0]) . '">' .$cuvant_cheie .'</a></li>';
 
 
                 // // afisarea paragraf care cuprinde cuvantul cautat
@@ -155,7 +155,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 $cuvant_cheie = $row['cuvant_cheie'];
                 $url_articol = $row['adresa_url'];
 
-                echo '<li class="titlu_cautari"><a href="https://canoaneortodoxe.ro/indice-canonic-conexiuni.php/' .  $url_articol . '">' .$cuvant_cheie .'</a></li>';
+                echo '<li class="titlu_cautari"><a href="' .  BASE_URL . 'indice-canonic-conexiuni.php/' .  $url_articol . '">' .$cuvant_cheie .'</a></li>';
             }
             echo "</ul>";
         }
@@ -181,7 +181,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 $prima_litera = ucfirst(substr(replaceSpecialChars($continut),0,1));
                 $url_cap = $row['adresa_url'];
 
-                echo '<li class="titlu_cautari"><a href="https://canoaneortodoxe.ro/repertoriu.php/' . $url_cap . '">' .$continut .'</a></li>';
+                echo '<li class="titlu_cautari"><a href="' .  BASE_URL . 'repertoriu.php/' . $url_cap . '">' .$continut .'</a></li>';
             }
             echo "</ul>";
         }

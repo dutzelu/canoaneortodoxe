@@ -1,15 +1,13 @@
 <?php
-// Initialize the session
-session_start();
- 
+require_once "../db.php";
+
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  header("location: https://canoaneortodoxe.ro/index.php");
+  header("Location: " . BASE_URL . "index.php");
   exit;
 }
  
 // Include config file
-require_once "config.php";
  
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -37,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Prepare a select statement
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
         
-        if($stmt = mysqli_prepare($link, $sql)){
+        if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
@@ -64,7 +62,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: https://canoaneortodoxe.ro/index.php");
+                            header("Location: " . BASE_URL . "index.php");
+
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -84,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Close connection
-    mysqli_close($link);
+    mysqli_close($conn);
 }
 ?>
  
@@ -102,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 form-wrapper auth login">
                 
-                <p><a href="https://canoaneortodoxe.ro/"><img src="https://canoaneortodoxe.ro/imagini/logo-canoane-ortodoxe.png" class="logo" width="250"/></a></p>
+                <p><a href="<?php echo BASE_URL;?>"><img src="<?php echo BASE_URL;?>imagini/logo-canoane-ortodoxe.png" class="logo" width="250"/></a></p>
 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">

@@ -70,7 +70,7 @@
                         echo '<li class="list-group-item"><strong>' . 'Cap. ' . $nume_cap . ":</strong>" . " " . $continut_cap;
                         
                         if(isset($_SESSION['username'])){
-                            echo ' <a href="https://canoaneortodoxe.ro/admin/edit-repertoriu.php/?id=' . $id_cap . '" style="color:red;">[edit]</a>' . "<br>";
+                            echo ' <a href="' .  BASE_URL . 'admin/edit-repertoriu.php/?id=' . $id_cap . '" style="color:red;">[edit]</a>' . "<br>";
                         } else {echo "<br>";}
 
                         $text="(" . $data1['conexiuni'] . ")";
@@ -88,7 +88,7 @@
 
                         $url_cap = creare_url_din_titlu ($continut_cap);
 
-                        echo '<p style="margin-top:14px;"><a class="btn btn-outline-primary btn-sm" href="https://canoaneortodoxe.ro/repertoriu.php/' . $url_cap . '">Vezi canoane »</a></p>';
+                        echo '<p style="margin-top:14px;"><a class="btn btn-outline-primary btn-sm" href="' .  BASE_URL . 'repertoriu.php/' . $url_cap . '">Vezi canoane »</a></p>';
 
                         echo "</li>";
                     }
@@ -100,6 +100,6 @@
 
 </div>
 </div>    
-<script src="https://canoaneortodoxe.ro/js/acordeon.js"></script>
+<script src="<?php echo BASE_URL;?>js/acordeon.js"></script>
 
 <?php include "footer.php"; ?>

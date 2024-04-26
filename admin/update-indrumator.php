@@ -16,12 +16,12 @@ if(isset ($_POST["submit"]) ) {
   $query="UPDATE indrumator_canonic 
           SET `continut` = '$continut',
               `cuvant_cheie` = '$cuvant_cheie'
-          WHERE `id` = '$b'";
+          WHERE `id` = ?";
   
-  
-  
-  $rez=mysqli_query($conn, $query);
-  
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param('i', $b);
+  $rez = $stmt->execute();
+  $rez = $stmt->get_result();
 }   
 
 else {

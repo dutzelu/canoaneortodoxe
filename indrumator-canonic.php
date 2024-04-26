@@ -99,7 +99,7 @@ $extra_linkuri = "";
                 
                 array_push ($adunare_conex_fara_link, $y['0']);
 
-                $conexiuni_cu_link .= '<a class="btn_indrumator" href="https://canoaneortodoxe.ro/indrumator-canonic-conexiuni.php?tema=' .  creare_url_din_titlu(strtolower($cuvant_cheie)) . '&conex=' . $id_uri_canoane_conex . '"role="button">Canoane » </a>';
+                $conexiuni_cu_link .= '<a class="btn_indrumator" href="' .  BASE_URL . 'indrumator-canonic-conexiuni.php?tema=' .  creare_url_din_titlu(strtolower($cuvant_cheie)) . '&conex=' . $id_uri_canoane_conex . '"role="button">Canoane » </a>';
 
                 // afișez continutul tabului
                 
@@ -120,7 +120,7 @@ $extra_linkuri = "";
             echo '<li id="' . strtolower($id_indice[0]) . '" class="list-group-item"><strong>' . $cuvant_cheie . '</strong> ';
 
             if(isset($_SESSION['username'])){
-               echo ' <a href="https://canoaneortodoxe.ro/admin/edit-indrumator.php/?id=' . $id_cuvant . '" style="color:red;">[edit]</a>' . "<br>";
+               echo ' <a href="' .  BASE_URL . 'admin/edit-indrumator.php/?id=' . $id_cuvant . '" style="color:red;">[edit]</a>' . "<br>";
             } 
  
             echo '<div class="indrumator">' . $continut . '</div>';

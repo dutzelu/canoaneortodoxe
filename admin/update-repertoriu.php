@@ -11,18 +11,19 @@ if(isset ($_POST["submit"]) ) {
   $continut = $_POST["continut"];
   $conexiuni = $_POST["conexiuni"];
   $anexe = $_POST["anexe"];
-
   
 
   $query="UPDATE capitole_repertoriu_canonic 
           SET `continut` = '$continut',
               `conexiuni` = '$conexiuni',
               `anexe` = '$anexe'
-          WHERE `id` = '$b'";
+          WHERE `id` = ?";
   
   
-  
-  $rez=mysqli_query($conn, $query);
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param('i', $b);
+  $rez = $stmt->execute();
+  $rez = $stmt->get_result();
   
 }   
 

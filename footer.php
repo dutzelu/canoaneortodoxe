@@ -5,16 +5,16 @@
     <div class="row p-2 justify-content-md-center">
 
         <div class="logoFooter">
-            <img src="https://canoaneortodoxe.ro/imagini/Logo Canoane Ortodoxe-footer.png" />                    
+            <img src="<?php echo BASE_URL;?>imagini/Logo Canoane Ortodoxe-footer.png" />                    
         </div>
 
         <div class="linkuriFooter">
 
             <ul>
-                <li class=""><a class="" href="https://canoaneortodoxe.ro/indrumator-canonic.php?litera=A">Îndrumător Canonic</a></li>
-                <li class=""><a class=""  href="https://canoaneortodoxe.ro/indice-canonic.php?litera=A">Indice Canonic</a></li>
-                <li class=""><a class=""  href="https://canoaneortodoxe.ro/repertoriu-canonic">Repertoriu Canonic</a></li>
-                <li class=""><a class=""  href="https://canoaneortodoxe.ro/contact.php">Contact</a></li>
+                <li class=""><a class="" href="<?php echo BASE_URL;?>indrumator-canonic.php?litera=A">Îndrumător Canonic</a></li>
+                <li class=""><a class=""  href="<?php echo BASE_URL;?>indice-canonic.php?litera=A">Indice Canonic</a></li>
+                <li class=""><a class=""  href="<?php echo BASE_URL;?>repertoriu-canonic">Repertoriu Canonic</a></li>
+                <li class=""><a class=""  href="<?php echo BASE_URL;?>contact.php">Contact</a></li>
             </ul>
             
     </div>
@@ -22,8 +22,8 @@
                 
                 <?php
             if(isset($_SESSION['username'])){ 
-                echo  '<a href="https://canoaneortodoxe.ro/login/logout.php">Logout </a></p>';
-            } else {echo '<a href="https://canoaneortodoxe.ro/login/login.php">Login </a></p>';}
+                echo  '<a href="' .  BASE_URL . 'login/logout.php">Logout </a></p>';
+            } else {echo '<a href="' .  BASE_URL . 'login/login.php">Login </a></p>';}
                 
                 ?>
 

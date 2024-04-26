@@ -91,14 +91,14 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
                 echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span> ';
                 
                 if(isset($_SESSION['username'])){
-                    echo '<a style="color:red; text-align:right" href="https://canoaneortodoxe.ro/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
+                    echo '<a style="color:red; text-align:right" href="' .  BASE_URL . 'admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
                 } else {echo "</p>";}
 
                 echo '<h1 class="titlu_canon">' . $data['DenumireExplicativa'] .'</h1>';
        
                 if ( $id_titlu_capitol !== 0) {
 
-                    echo '<span class="bold">Categorie: </span><a href="https://canoaneortodoxe.ro/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
+                    echo '<span class="bold">Categorie: </span><a href="' .  BASE_URL . 'categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
                     
                      // afisez toate numerele de canoane cu url din categoria respectivă
                     $url_baza="unic.php";
@@ -132,7 +132,7 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
 
                      // butonul Canon + conexiuni
 
-                     echo '<p class="mt-3"><a class="btn btn-primary btn-sm" href="https://canoaneortodoxe.ro/conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
+                     echo '<p class="mt-3"><a class="btn btn-primary btn-sm" href="' .  BASE_URL . 'conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
                 
                 } 
 
@@ -163,11 +163,11 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
             <?php 
             
             if (!$stop_start) {
-                echo '<a href="https://canoaneortodoxe.ro/unic.php/' . $adresa_url_back . '" class="btn btn-outline-danger btn-sm">< Anteriorul </a> ';
+                echo '<a href="' .  BASE_URL . 'unic.php/' . $adresa_url_back . '" class="btn btn-outline-danger btn-sm">< Anteriorul </a> ';
             }
             
             if (!$stop_final) {
-                echo '<a href="https://canoaneortodoxe.ro/unic.php/' . $adresa_url_next . '" class="btn btn-danger btn-sm"> Urmatorul ></a>';
+                echo '<a href="' .  BASE_URL . 'unic.php/' . $adresa_url_next . '" class="btn btn-danger btn-sm"> Urmatorul ></a>';
             }
             ?>
 

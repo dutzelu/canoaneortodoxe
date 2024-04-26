@@ -30,11 +30,12 @@ if(isset ($_POST["submit"]) ) {
               `Talcuire` = '$talcuire',         
               `Simfonie` = '$simfonie',
               `adresa_url` = '$adresa_url'
-          WHERE `id` = '$b';";
+          WHERE `id` = ?;";
   
   
-  
-  $rez=mysqli_query($conn, $query);
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param('i', $b);
+  $rezultate = $stmt->execute();
   
 }   
 

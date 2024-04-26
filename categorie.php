@@ -65,10 +65,10 @@ include "titluri-pagini.php";
 
                             echo 
                             '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span><span class="denumire">' 
-                            .'<a href="https://canoaneortodoxe.ro/unic.php/'. $url_articol . '">' .$data['DenumireExplicativa'] .'</a></span>';
+                            .'<a href="' . BASE_URL . 'unic.php/' . $url_articol . '">' .$data['DenumireExplicativa'] .'</a></span>';
                             
                             if(isset($_SESSION['username'])){
-                                echo ' <a style="color:red; text-align:right" href="https://canoaneortodoxe.ro/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>';
+                                echo ' <a style="color:red; text-align:right" href="' . BASE_URL . 'admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>';
                             } else {echo '</p>';}
 
                             echo '<div class="continut">'.$data['Continut'].'</div>';
@@ -89,7 +89,7 @@ include "titluri-pagini.php";
                                 echo $links;
                                 // butonul Canon + conexiuni
 
-                                echo '<p class="mt-3"><a class="btn btn-outline-primary btn-sm" href="https://canoaneortodoxe.ro/conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
+                                echo '<p class="mt-3"><a class="btn btn-outline-primary btn-sm" href="' . BASE_URL . '/conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
 
                             } 
 

@@ -1,6 +1,5 @@
 <?php
-// Initialize the session
-session_start();
+require_once "../db.php";
  
 // Unset all of the session variables
 $_SESSION = array();
@@ -9,6 +8,6 @@ $_SESSION = array();
 session_destroy();
  
 // Redirect to login page
-header("location: https://canoaneortodoxe.ro/index.php");
+header("Location: " . BASE_URL . "index.php");
 exit;
 ?>

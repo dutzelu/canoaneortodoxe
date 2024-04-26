@@ -97,7 +97,7 @@ function transformers ($conexiune_simpla) {
                   }  
                   // pun linkul la canon
 
-                  $canon_cu_link = '<a href="https://canoaneortodoxe.ro/unic.php/'. $url_canon .'">' . $nr_canon . ' ' .$capitol . "</a>" . " | " ;
+                  $canon_cu_link = '<a href="' .  BASE_URL . 'unic.php/'. $url_canon .'">' . $nr_canon . ' ' .$capitol . "</a>" . " | " ;
                   // concatenez toate linkurile într-un string
                   $canoane_cu_link .= $canon_cu_link ; 
 
@@ -180,7 +180,7 @@ function lista_numere_url ($x, $y, $z) {
 
         
         if ($id_canon!=$y){
-          $nav ='<a href="https://canoaneortodoxe.ro/' . $z . "/" . $url_articol . '">'.$nr_can.'</a>'.', ';
+          $nav ='<a href="' .  BASE_URL . '' . $z . "/" . $url_articol . '">'.$nr_can.'</a>'.', ';
         } else {$nav =$nr_can . ', ';}
 
         $nav_all.=$nav; 
@@ -223,7 +223,7 @@ function numere_url_din_categ ($slug) {
         $id_canon = $data['id_canon'];
         $nr_canoane = $data['id_sfarsit'] - $data['id_inceput'];
         
-        $nav ='<a href="https://canoaneortodoxe.ro/unic.php/' . $url_articol . '">'.$nr_can.'</a>'.', ';
+        $nav ='<a href="' .  BASE_URL . 'unic.php/' . $url_articol . '">'.$nr_can.'</a>'.', ';
         
         $nav_all.=$nav; 
         
@@ -289,15 +289,15 @@ function afiseaza_canon ($id_canon) {
             echo '<p><span class="badge badge-secondary">'.$data['Nume'] .' </span> ';
 
             if(isset($_SESSION['username'])){
-              echo '<a style="color:red; text-align:right" href="https://canoaneortodoxe.ro/admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
+              echo '<a style="color:red; text-align:right" href="' .  BASE_URL . 'admin/edit.php/?id=' . $id_canon . '">[edit] </a></p>'; 
             } else {
               echo "</p>";
             }
             
-            echo '<h2 class="titlu_canon"><a href="https://canoaneortodoxe.ro/unic.php/'. $url_articol . '">' .$data['DenumireExplicativa'] .' »</a>
+            echo '<h2 class="titlu_canon"><a href="' .  BASE_URL . 'unic.php/'. $url_articol . '">' .$data['DenumireExplicativa'] .' »</a>
             </h2>';
 
-            echo '<span class="bold">Categorie: </span><a href="https://canoaneortodoxe.ro/categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
+            echo '<span class="bold">Categorie: </span><a href="' .  BASE_URL . 'categorie.php?nume=' . $data2['slug'] .'">'. $data2['titlu'] .'</a> <br>';
 
             // afisez continutul canonului, pedeapsa, conexiuni, comentarii si simfonie
         

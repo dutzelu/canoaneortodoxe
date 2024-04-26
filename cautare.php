@@ -80,7 +80,7 @@ $extra_linkuri = "";
 
                     echo '<tr class="clickable-row">';
                         echo '<td width="10%">' . $Nume . '</a></td>';
-                        echo '<td width="30%"><a href="https://canoaneortodoxe.ro/unic.php/' . $url . '">' . $Denumire . '</a></td>';
+                        echo '<td width="30%"><a href="' .  BASE_URL . 'unic.php/' . $url . '">' . $Denumire . '</a></td>';
                         echo '<td width="60%">' . $Continut . '</td>';
                         // echo '<td>' . $Pedeapsa . '</td>';
                         // echo '<td>' . $Conexiuni . '</td>';
