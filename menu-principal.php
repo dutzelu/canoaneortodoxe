@@ -2,6 +2,8 @@
     $url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}"; 
 ?>
 
+<header>
+
 <nav class="navbar navbar-expand-lg navbar-light">
 
 <div class="row">
@@ -140,3 +142,5 @@
     </div>
     </div>
 </nav>
+
+                </header>

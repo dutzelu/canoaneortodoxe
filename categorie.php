@@ -73,12 +73,14 @@ include "titluri-pagini.php";
 
                             echo '<div class="continut">'.$data['Continut'].'</div>';
 
-                             
+                            
 
                             if ($data["Pedeapsa"]==NULL || $data["Pedeapsa"]=='-'){echo "";} 
                                 else {echo 'Pedeapsa: ' .$data['Pedeapsa']."<br>";} 
                         
-                            if ($data["Conexiuni"]==NULL || $data["Conexiuni"]=='-'){echo "";} 
+                            echo '<nav>';
+
+                                if ($data["Conexiuni"]==NULL || $data["Conexiuni"]=='-'){echo "";} 
                             else {
             
                                 $text=$data['Conexiuni'];
@@ -88,6 +90,8 @@ include "titluri-pagini.php";
                                 include "conex-canoane.php";
                                 echo $links;
                                 // butonul Canon + conexiuni
+
+                                echo '</nav>';
 
                                 echo '<p class="mt-3"><a class="btn btn-outline-primary btn-sm" href="' . BASE_URL . '/conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
 

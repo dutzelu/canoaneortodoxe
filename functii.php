@@ -1,5 +1,14 @@
 <?php
 
+// Funcție direct dump 
+
+function dd ($x) {
+  echo "<pre>";
+  var_dump($x);
+  echo "</pre>";
+
+}
+
 // Functie care inlocuieste diacriticile si alte caractere cu echivalentul ASCII
 
 function replaceSpecialChars ($string){
@@ -187,11 +196,11 @@ function lista_numere_url ($x, $y, $z) {
         
       } 
 
-      echo '<span>Navighează: </span>';
+      echo '<nav><span>Navighează: </span>';
 
       $nav_all=substr($nav_all, 0, -2);
       print_r($nav_all);
-      echo '</div>';
+      echo '</nav></div>';
     }
 
 // Navigație în capitolele canoanelor cu link pe numerele canoanelor pe baza slug-ului unei categorii
