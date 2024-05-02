@@ -222,6 +222,7 @@ function numere_url_din_categ ($slug) {
       $result = $stmt->get_result();
           
       echo '<div class="navigheaza">';
+      echo '<nav>';
 
       
       while ($data = mysqli_fetch_assoc($result)) {   
@@ -244,6 +245,7 @@ function numere_url_din_categ ($slug) {
       
         $nav_all=substr($nav_all, 0, -2);
         print_r($nav_all);
+        echo '</nav>';
         echo '</div>';
 
 }

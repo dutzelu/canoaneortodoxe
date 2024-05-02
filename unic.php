@@ -123,17 +123,19 @@ $cuvant_cautat_html = '<b>' . $cautare . '</b>';
                 else {
                     // echo 'Conexiuni: </span>' .$data['Conexiuni']."<br>"; conexiuni fara link
 
+                    echo '<nav>';
                     $text=$data['Conexiuni'];
                     echo 'Conexiuni: </span>';
 
                     // introduc conexiunile cu link
                     include "conex-canoane.php";
                     echo $links;
-
-                     // butonul Canon + conexiuni
-
-                     echo '<p class="mt-3"><a class="btn btn-primary btn-sm" href="' .  BASE_URL . 'conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
-                
+                    
+                    // butonul Canon + conexiuni
+                    
+                    echo '<p class="mt-3"><a class="btn btn-primary btn-sm" href="' .  BASE_URL . 'conexiuni.php/' .  $adresa_url . '"role="button">Canon + conexiuni</a></p>';
+                    
+                    echo '</nav>';
                 } 
 
                 // if ($comentarii ==NULL) {echo "";} 
