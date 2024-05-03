@@ -16,10 +16,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     
     autocomplete();
     
-    if ( in_array( ucfirst($cautare), $array_cuvinte ) ) {
-        echo "este în listă";
-    }
-    
     if ( !in_array( ucfirst($cautare), $array_cuvinte ) ) {
         
         $query="INSERT INTO cautari (cautat, ip) VALUES (?,?)";
