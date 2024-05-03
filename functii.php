@@ -412,13 +412,15 @@ function ellipse($cuvant_cautat, $text_sursa, $nr_cuvinte){
 
 function autocomplete () {
 
-  global $conn, $lista_cuvinte;
+  global $conn, $lista_cuvinte, $array_cuvinte;
   $lista_cuvinte = NULL;
+  $array_cuvinte=array();
   $sql = 'Select cuvant_cheie From indice_canonic UNION Select cuvant_cheie From indrumator_canonic;';
   $rezultate = mysqli_query($conn, $sql);
   
   while ($data = mysqli_fetch_assoc($rezultate)) {
     $lista_cuvinte .= '"' . trim(mb_strtolower($data['cuvant_cheie'])) . '",';
+    array_push($array_cuvinte, $data['cuvant_cheie']);
   }
 }
 

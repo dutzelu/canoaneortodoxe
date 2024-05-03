@@ -6,7 +6,33 @@ include "functii.php";
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     $cautare = $_POST['search'];
 
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    
+    autocomplete();
+    
+    if ( in_array( ucfirst($cautare), $array_cuvinte ) ) {
+        echo "este în listă";
+    }
+    
+    if ( !in_array( ucfirst($cautare), $array_cuvinte ) ) {
+        
+        $query="INSERT INTO cautari (cautat, ip) VALUES (?,?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('ss', $cautare, $ip);
+        $rez = $stmt->execute();
+        $rez = $stmt->get_result();
+    }
+    
+
 } else {$cautare='Caută cuvinte cheie';}
+
+
 
 ?>
 
