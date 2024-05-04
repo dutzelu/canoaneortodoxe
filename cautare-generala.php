@@ -13,14 +13,22 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     } else {
         $ip = $_SERVER['REMOTE_ADDR'];
     }
+
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+    if (strpos($user_agent, 'Mobile')) {
+        $device = 'mobile';
+    } else {
+        $device = 'desktop';
+    }
     
     autocomplete();
     
     if ( !in_array( ucfirst($cautare), $array_cuvinte ) ) {
         
-        $query="INSERT INTO cautari (cautat, ip) VALUES (?,?)";
+        $query="INSERT INTO cautari (cautat, ip, device) VALUES (?,?,?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('ss', $cautare, $ip);
+        $stmt->bind_param('sss', $cautare, $ip, $device);
         $rez = $stmt->execute();
         $rez = $stmt->get_result();
     }
@@ -62,6 +70,31 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 <?php if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
+            echo '<p class="bg-light p-2">Căutare după: <b>'  . $cautare . '</b></p>';
+
+            // Căutare în Titlurile canoanelor (titluri capitole)
+
+            $cautare_cu_tag = "%$cautare%"; // prepare the $name variable 
+            $sql = "SELECT * FROM titluri_capitole Where `titlu` LIKE ? UNION SELECT * From titluri_capitole Where `slug` LIKE ? ORDER BY `id` ASC; "; // SQL with parameters
+            $stmt = $conn->prepare($sql); 
+            $stmt->bind_param("ss",  $cautare_cu_tag, $cautare_cu_tag);
+            $stmt->execute();
+            $result = $stmt->get_result(); // get the mysqli result
+            $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
+            
+            if (!empty($rows)) {
+                echo '<p class="mt-4"><span class="badge bg-secondary ">Categorii canoane</span> (' . count($rows) . (count($rows)==1 ? ' rezultat' : ' rezultate') . ')</p>';
+                echo "<ul>";
+                foreach ($rows as $row) {
+                    $id_indrum = $row['id'];
+                    $titlu = $row['titlu'];
+                    $slug = $row['slug'];
+        
+                    echo '<li class="titlu_cautari"><a href="' .  BASE_URL . 'categorie.php?nume=' . $slug . '">' .$titlu .'</a></li>';
+
+                }
+                echo "</ul>";
+            }
 
             // Căutare în Canoane (Denumirea Explicativa + Conținut)
 
@@ -80,7 +113,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             $result = $stmt->get_result(); // get the mysqli result
             $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
 
-            echo '<p class="bg-light p-2">Căutare după: <b>'  . $cautare . '</b></p>';
 
             echo '<div class="p-2">';
 
@@ -118,12 +150,14 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             echo "</ul>";
         }
 
+        
+
         // Căutare în Îndrumătorul canonic
 
         $cautare_cu_tag = "%$cautare%"; // prepare the $name variable 
         $sql = "SELECT * FROM indrumator_canonic Where `cuvant_cheie` LIKE ? UNION SELECT * FROM indrumator_canonic Where `continut`LIKE ? ORDER BY `id` ASC; "; // SQL with parameters
         $stmt = $conn->prepare($sql); 
-        $stmt->bind_param("ss",  $cautare_cu_tag,  $cautare_cu_tag); // here we can use only a variable
+        $stmt->bind_param("ss",  $cautare_cu_tag,  $cautare_cu_tag); 
         $stmt->execute();
         $result = $stmt->get_result(); // get the mysqli result
         $rows = $result->fetch_all(MYSQLI_ASSOC); // all rows matched
