@@ -67,11 +67,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
     <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100">
-        <img src="<?php echo BASE_URL;?>imagini/preot-preoteasa.jpg" class="card-img-top" alt="...">
+        <img src="<?php echo BASE_URL;?>imagini/Invierea-Domnului.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Divorțul preoților și diaconilor</h5>
-            <p class="card-text">Despărţirea canonică a clerului, pentru adulterul soţiei. Divorţul canonic al clerului.</p>
-            <a href="<?php echo BASE_URL;?>indice-canonic-conexiuni.php/divortul-clericilor" class="btn btn-primary">Citește</a>
+            <h5 class="card-title">Rânduiala prăznuirii în SĂPTĂMÂNA LUMINATĂ </h5>
+            <p class="card-text">Se cuvine ca, de Ia sfânta zi a învierii lui Hristos, Dumnezeul nostru, până la noua duminică (duminica următoare), întreaga săptămână să o pe­treacă credincioşii fără întrerupere în sfânta Biserică...</p>
+            <a href="<?php echo BASE_URL;?>unic.php/randuiala-praznuirii-saptamanii-luminate?cautare=66 trul" class="btn btn-primary">Citește</a>
         </div>
         </div>
     </div>
@@ -83,7 +83,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         <img src="<?php echo BASE_URL;?>imagini/intreita-afundare.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Întreita afundare</h5>
-            <p class="card-text">Botezul copilului se face prin afundarea de 3 ori în cristelniță.</p>
+            <p class="card-text">Dacă vreun episcop sau presbiter nu ar săvârşi cele trei afundări ale unei singure sfinţiri (a botezului), ci numai o afundare, aceea care se dă (se practică) întru moartea Domnului, să se caterisească. </p>
             <a href="<?php echo BASE_URL;?>unic.php/botezul-se-savarseste-prin-trei-afundari" class="btn btn-primary">Citește</a>
         </div>
         </div>
