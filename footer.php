@@ -6,8 +6,8 @@
 
   
 
-        <div class="logoFooter col">
-                <p><img src="<?php echo BASE_URL;?>imagini/Logo Canoane Ortodoxe-footer.png" /></p>
+        <div class="logoFooter col mb-3">
+                <p><img src="<?php echo BASE_URL;?>imagini/logo-CO-footer.png" /></p>
                 
                 <p class="creat">Realizat de <a href="https://ortodoxiatinerilor.ro">Ortodoxia Tinerilor</a>
                 <br>
@@ -18,7 +18,9 @@
                 echo  '<a href="' .  BASE_URL . 'login/logout.php">Logout </a></p>';
             } else {echo '<a href="' .  BASE_URL . 'login/login.php">Login </a></p>';}
                 
-                ?>
+                ?> <a href="<?php echo BASE_URL;?>despre-noi.php">Despre noi</a> | <a href="<?php echo BASE_URL;?>contact.php">Contact</a>
+
+
         </div>
 
         <div class="col">
@@ -85,10 +87,12 @@
                 <li class=" "><a  href="<?php echo BASE_URL;?>categorie.php?nume=nicolae-constantinopol">Nicolae al Constantinopolului</a></li>
                 <li class=" "><a  href="<?php echo BASE_URL;?>categorie.php?nume=prescriptii-canonice">Prescripții canonice</a></li>
                 <li class=" "><a  href="<?php echo BASE_URL;?>categorie.php?nume=scrisori">Scrisori</a></li>
+
+                <p class="mt-4"><span class="badge bg-secondary">Instrumente de cercetare</span></p>
                 <li class=""><a class="" href="<?php echo BASE_URL;?>indrumator-canonic.php?litera=A">Îndrumător Canonic</a></li>
                 <li class=""><a class=""  href="<?php echo BASE_URL;?>indice-canonic.php?litera=A">Indice Canonic</a></li>
                 <li class=""><a class=""  href="<?php echo BASE_URL;?>repertoriu-canonic">Repertoriu Canonic</a></li>
-                <li class=""><a class=""  href="<?php echo BASE_URL;?>contact.php">Contact</a></li>
+                
   
 
               </ul>
