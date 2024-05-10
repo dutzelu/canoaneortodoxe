@@ -18,7 +18,7 @@
                 echo  '<a href="' .  BASE_URL . 'login/logout.php">Logout </a></p>';
             } else {echo '<a href="' .  BASE_URL . 'login/login.php">Login </a></p>';}
                 
-                ?> <a href="<?php echo BASE_URL;?>despre-noi.php">Despre noi</a> | <a href="<?php echo BASE_URL;?>contact.php">Contact</a>
+                ?> <a href="<?php echo BASE_URL;?>despre-proiect.php">Despre proiect</a> | <a href="<?php echo BASE_URL;?>contact.php">Contact</a>
 
 
         </div>

@@ -27,7 +27,7 @@
 
                             <div class="input-group">
                                 <div class="completeaza">
-                                    <input type="text" name="search" class="form-control" placeholder="Caută cuvinte cheie" id="autocomplete"><br>
+                                    <input type="text" name="search" class="form-control" placeholder="Caută cuvinte cheie" id="autocomplete" required><br>
                                 </div>
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary">
